@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "jest",
+    "test:ci": "jest --runInBand"
   },
   "private": true,
   "dependencies": {
@@ -25,10 +26,11 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular-builders/jest": "^19.0.0",
     "@angular-devkit/build-angular": "^19.2.3",
     "@angular/cli": "^19.2.3",
     "@angular/compiler-cli": "^19.2.0",
-    "@types/jasmine": "~5.1.0",
+    "@types/jest": "^29.5.14",
     "angular-eslint": "^19.2.1",
     "eslint": "^9.22.0",
     "eslint-config-prettier": "^9.1.0",
@@ -36,10 +38,9 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-environment-node": "^29.7.0",
     "jest-preset-angular": "^14.5.3",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
     "prettier-plugin-organize-imports": "^4.1.0",
     "pretty-quick": "^4.1.1",
+    "ts-jest": "^29.2.6",
     "typescript": "~5.7.2"
   }
 }

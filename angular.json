@@ -71,17 +71,17 @@
           "builder": "@angular-devkit/build-angular:extract-i18n"
         },
         "test": {
-          "builder": "@nx/jest:jest",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "jestConfig": "libs/{projectName}/jest.config.ts"
+            "jestConfig": ["jest.config.ts"]
           }
         },
         "test-ci": {
-          "builder": "@nx/jest:jest",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "jestConfig": "libs/{projectName}/jest.config.ts",
+            "jestConfig": "jest.config.ts",
             "collectCoverage": true,
-            "coverageDirectory": "coverage/{projectName}",
+            "coverageDirectory": "coverage/aether-fintech-frontend",
             "coverageReporters": ["html", "lcov", "text-summary"]
           }
         },
