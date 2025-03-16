@@ -1,0 +1,5 @@
+<div class="sidebar-items-container">
+  @for (item of model; track item.id; let i = $index) {
+    <aef-sidebar-item [index]="i" [item]="item" />
+  }
+</div>

@@ -1,0 +1,4 @@
+<div [ngClass]="isActive() ? 'is-active' : ''" class="sidebar-item-container">
+  <i [ngClass]="item().icon" class="sidebar-item-icon"></i>
+  <span class="sidebar-item-label">{{ item().label }}</span>
+</div>

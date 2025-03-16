@@ -8,7 +8,7 @@
       "schematics": {},
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "aef",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -73,7 +73,9 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "jestConfig": ["jest.config.ts"]
+            "jestConfig": [
+              "jest.config.ts"
+            ]
           }
         },
         "test-ci": {
@@ -82,7 +84,11 @@
             "jestConfig": "jest.config.ts",
             "collectCoverage": true,
             "coverageDirectory": "coverage/aether-fintech-frontend",
-            "coverageReporters": ["html", "lcov", "text-summary"]
+            "coverageReporters": [
+              "html",
+              "lcov",
+              "text-summary"
+            ]
           }
         },
         "lint": {

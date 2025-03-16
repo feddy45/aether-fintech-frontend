@@ -1,8 +1,13 @@
-<header>
-  Welcome to Aether Fintech
-</header>
-
 <main>
-  <p-button [label]="'Benvenuto'"></p-button>
-  <router-outlet />
+  <div class="aef-container">
+    <div class="aef-toolbar-container">
+      
+    </div>
+    <div class="aef-sidebar-container">
+      <aef-sidebar />
+    </div>
+    <div class="aef-content-container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </main>
