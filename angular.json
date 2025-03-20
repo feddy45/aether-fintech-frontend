@@ -90,9 +90,6 @@
               "text-summary"
             ]
           }
-        },
-        "lint": {
-          "builder": "@nx/eslint:lint"
         }
       }
     }
