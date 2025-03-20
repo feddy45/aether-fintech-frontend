@@ -1,0 +1,9 @@
+.aef-container {
+  display: flex;
+  height: 100vh;
+}
+
+.aef-content-container {
+  height: 100%;
+  overflow-y: scroll;
+}

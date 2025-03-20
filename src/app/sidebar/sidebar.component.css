@@ -1,0 +1,6 @@
+.sidebar-items-container {
+  border-right: 1px solid var(--aef-neutral-light5);
+  height: -webkit-fill-available;
+  margin: 16px 0;
+  padding: 16px;
+}

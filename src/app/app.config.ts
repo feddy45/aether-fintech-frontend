@@ -6,15 +6,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { AefTheme } from '../styles/app-theme';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), providePrimeNG({
-    theme: {
-      preset: AefTheme,
-      options: {
-        prefix: 'aef',
-        darkModeSelector: '.aef-app-dark',
-      },
-    },
-  }), provideAnimationsAsync()],
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
+    providePrimeNG({
+      theme: AefTheme,
+    }), provideAnimationsAsync()],
 };
 
 

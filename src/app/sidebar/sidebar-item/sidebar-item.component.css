@@ -1,5 +1,6 @@
 .sidebar-item-container {
   align-items: center;
+  border-radius: var(--aef-border-radius-small);
   display: flex;
   font-size: 22px;
   gap: 8px;
@@ -11,6 +12,11 @@
   }
 
   &:hover {
-    background-color: red;
+    background-color: var(--aef-accent-light4);
+    cursor: pointer;
   }
+}
+
+.sidebar-item {
+  padding: 16px;
 }
