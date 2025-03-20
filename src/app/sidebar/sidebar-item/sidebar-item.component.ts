@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, inject, input, output } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
@@ -33,6 +33,7 @@ export class SidebarItemComponent {
   router = inject(Router);
   item = input.required<MenuItem>();
   index = input.required<number>();
+  onClick = output<MenuItem>();
 
   isActive = computed(() =>
     this.router.isActive(this.item().routerLink[0], {
