@@ -33,7 +33,7 @@ export class SidebarItemComponent {
   router = inject(Router);
   item = input.required<MenuItem>();
   index = input.required<number>();
-  onClick = output<MenuItem>();
+  clickOnMenuItem = output<MenuItem>();
 
   isActive = computed(() =>
     this.router.isActive(this.item().routerLink[0], {
