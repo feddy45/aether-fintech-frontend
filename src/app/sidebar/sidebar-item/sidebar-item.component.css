@@ -2,9 +2,8 @@
   align-items: center;
   border-radius: var(--aef-border-radius-small);
   display: flex;
-  font-size: 22px;
+  font-size: 18px;
   gap: 8px;
-  margin: 8px 0;
   padding: 8px;
 
   &.is-active {

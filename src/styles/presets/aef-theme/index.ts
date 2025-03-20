@@ -91,6 +91,8 @@ export default {
       extraSmall: '2px',
       small: '4px',
       medium: '6px',
+      large: '8px',
+      extraLarge: '12px',
     },
   },
   semantic: {

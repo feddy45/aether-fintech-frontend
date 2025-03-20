@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'aef-wallet',
   imports: [],
   templateUrl: './wallet.component.html',
-  styleUrl: './wallet.component.css'
+  styleUrl: './wallet.component.css',
 })
 export class WalletComponent {
 
