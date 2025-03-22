@@ -9,6 +9,9 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "aef",
+      "i18n": {
+        "sourceLocale": "it"
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
