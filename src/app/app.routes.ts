@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { WalletComponent } from './wallet/wallet.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { WalletComponent } from './components/wallet/wallet.component';
 
 export const routes: Routes = [
   {

@@ -1,0 +1,6 @@
+<h2>Le tue transazioni</h2>
+<div class="transactions-container">
+  @for (transaction of transactions(); track transaction.id) {
+    <aef-transaction [transaction]="transaction" />
+  }
+</div>

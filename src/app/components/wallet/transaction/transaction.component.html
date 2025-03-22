@@ -1,0 +1,18 @@
+<div class="transaction-container">
+  <div class="transaction">
+    <div class="transaction-info">
+      <div class="transaction-description">
+        {{ transaction().description }}
+      </div>
+      <div class="transaction-type">
+        <span class="transaction-type-{{ transaction().type }}">{{ transaction().type }}</span>
+      </div>
+      <div class="transaction-date">
+        {{ transaction().date }}
+      </div>
+    </div>
+    <div class="transaction-amount">
+      {{ transaction().amount }} €
+    </div>
+  </div>
+</div>
