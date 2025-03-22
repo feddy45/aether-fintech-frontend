@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="card">
+    <div class="card-inner">
+      <div class="front">
+
+        <div class="row card-no">
+
+          @for (number of cardNumberSplitted(); track number) {
+            <p>{{ number }}</p>
+          }
+        </div>
+        <div class="row card-holder">
+          <p>CARD HPLDER</p>
+          <p>Validità</p>
+        </div>
+        <div class="row name">
+          <p>{{ userService.user().firstName }} {{ userService.user().lastName }}</p>
+          <p>{{ card().expirationDate | date: 'MM / YY' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

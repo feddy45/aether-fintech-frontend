@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Transaction } from '../../../models/transaction';
+import { Transaction } from '../../models/transaction';
 
 @Component({
   selector: 'aef-transaction',

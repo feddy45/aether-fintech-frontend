@@ -1,12 +1,14 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { TransactionService } from '../../services/wallet/transaction.service';
 import { Transaction } from '../../models/transaction';
-import { TransactionComponent } from './transaction/transaction.component';
+import { TransactionComponent } from '../transaction/transaction.component';
+import { CardsSliderComponent } from '../cards-slider/cards-slider.component';
 
 @Component({
   selector: 'aef-wallet',
   imports: [
     TransactionComponent,
+    CardsSliderComponent,
   ],
   templateUrl: './wallet.component.html',
   styleUrl: './wallet.component.css',

@@ -1,0 +1,5 @@
+<p-carousel [circular]="true" [numScroll]="1" [numVisible]="2" [value]="cards()">
+  <ng-template let-card pTemplate="item">
+    <aef-card [card]="card" />
+  </ng-template>
+</p-carousel>
