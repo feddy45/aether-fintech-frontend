@@ -7,7 +7,7 @@
 .aef-content-container {
   background: var(--aef-neutral-light5);
   height: 100%;
-  margin: 16px;
+  padding: 16px;
   overflow-y: scroll;
   width: 100%;
 }

@@ -1,9 +1,25 @@
 .transactions-container {
-  display: flex;
-  flex-direction: column;
-  margin: 16px;
-  padding: 16px;
   background: var(--aef-basic-white);
   border-radius: var(--aef-border-radius-extra-large);
+  display: flex;
+  flex-direction: column;
   gap: 16px;
+  overflow-y: scroll;
+  padding: 16px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  max-width: 100%;
+  overflow: scroll;
+  width: 100%;
 }
