@@ -13,6 +13,7 @@ import { DatePipe } from '@angular/common';
 })
 export class CardComponent {
   userService = inject(UserService);
+
   card = input.required<Card>();
   cardNumberSplit = computed(() => this.card().number.match(/.{1,4}/g));
 }

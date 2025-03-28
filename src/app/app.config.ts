@@ -4,12 +4,13 @@ import { routes } from './app.routes';
 import { providePrimeNG } from 'primeng/config';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AefTheme } from '../styles/app-theme';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
     providePrimeNG({
       theme: AefTheme,
-    }), provideAnimationsAsync()],
+    }), provideAnimationsAsync(), provideHttpClient()],
 };
 
 
