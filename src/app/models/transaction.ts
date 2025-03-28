@@ -1,8 +1,7 @@
 export interface Transaction {
-  id: number;
+  id: string;
   amount: number;
   date: Date;
   description: string;
   type: string;
-  wallet: number;
 }
