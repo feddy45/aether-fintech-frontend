@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.second-line {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+
+  & > div {
+    flex: 1;
+  }
+}
