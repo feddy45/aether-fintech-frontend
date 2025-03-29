@@ -1,33 +1,35 @@
-<div class="container">
-  <div class="first-line">
-    <aef-input-label inputId="beneficiary" label="Beneficiario">
-      <p-inputgroup>
-        <input id="beneficiary" pInputText />
-        <p-inputgroup-addon>
-          <p-button icon="pi pi-address-book" severity="secondary" variant="text" />
-        </p-inputgroup-addon>
-      </p-inputgroup>
-    </aef-input-label>
-  </div>
-  <div class="second-line">
-    <div class="iban-container">
-      <aef-input-label inputId="iban" label="IBAN">
-        <input id="iban" pInputText />
+<form (ngSubmit)="onSubmit()" [formGroup]="bankTransferForm">
+  <div class="container">
+    <div class="first-line">
+      <aef-input-label inputId="beneficiary" label="Beneficiario">
+        <p-inputgroup>
+          <input formControlName="beneficiary" id="beneficiary" pInputText />
+          <p-inputgroup-addon>
+            <p-button icon="pi pi-address-book" severity="secondary" variant="text" />
+          </p-inputgroup-addon>
+        </p-inputgroup>
       </aef-input-label>
     </div>
-    <div class="amount-container">
-      <aef-input-label inputId="amount" label="Importo">
-        <p-inputNumber currency="EUR" inputId="amount" locale="it-IT" mode="currency"></p-inputNumber>
+    <div class="second-line">
+      <div class="iban-container">
+        <aef-input-label inputId="iban" label="IBAN">
+          <input formControlName="iban" id="iban" pInputText />
+        </aef-input-label>
+      </div>
+      <div class="amount-container">
+        <aef-input-label inputId="amount" label="Importo">
+          <p-inputNumber currency="EUR" formControlName="amount" inputId="amount" locale="it-IT"
+                         mode="currency"></p-inputNumber>
+        </aef-input-label>
+      </div>
+    </div>
+    <div class="third-line">
+      <aef-input-label inputId="description" label="Causale">
+        <textarea formControlName="description" id="description" pTextarea rows="2"></textarea>
       </aef-input-label>
     </div>
+    <div class="button-container">
+      <p-button [disabled]="!bankTransferForm.valid" severity="primary" type="submit">Continua</p-button>
+    </div>
   </div>
-  <div class="third-line">
-    <aef-input-label inputId="description" label="Causale">
-      <textarea id="description" pTextarea rows="2"></textarea>
-    </aef-input-label>
-  </div>
-  <div class="button-container">
-    <p-button severity="primary">Continua</p-button>
-  </div>
-
-</div>
+</form>
