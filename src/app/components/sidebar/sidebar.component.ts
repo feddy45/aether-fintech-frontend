@@ -14,8 +14,8 @@ import { Router } from '@angular/router';
 export class SidebarComponent {
   router = inject(Router);
   model: MenuItem[] = [
-    { id: 'dashboard', label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: '/' },
-    { id: 'wallet', label: 'Wallet', icon: 'pi pi-fw pi-wallet', routerLink: 'wallet' },
+    { id: 'cards', label: 'Le tue carte', icon: 'pi pi-fw pi-wallet', routerLink: '/' },
+    { id: 'operations', label: 'Operazioni', icon: 'pi pi-fw pi-euro', routerLink: '/operations' },
   ];
 
   onMenuItemClick(item: MenuItem) {

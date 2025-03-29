@@ -1,6 +1,6 @@
 import { Component, inject, model, OnInit, signal } from '@angular/core';
-import { CardService } from '../../services/card/card.service';
-import { Card } from '../../models/card';
+import { CardService } from '../../../services/card/card.service';
+import { Card } from '../../../models/card';
 import { CardComponent } from './card/card.component';
 import { Carousel, CarouselPageEvent } from 'primeng/carousel';
 import { PrimeTemplate } from 'primeng/api';

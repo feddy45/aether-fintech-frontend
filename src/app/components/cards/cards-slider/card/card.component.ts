@@ -1,6 +1,6 @@
 import { Component, computed, inject, input } from '@angular/core';
-import { Card } from '../../../models/card';
-import { UserService } from '../../../services/user/user.service';
+import { Card } from '../../../../models/card';
+import { UserService } from '../../../../services/user/user.service';
 import { DatePipe } from '@angular/common';
 
 @Component({

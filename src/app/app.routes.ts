@@ -1,17 +1,19 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { WalletComponent } from './components/wallet/wallet.component';
+import { CardsComponent } from './components/cards/cards.component';
+import { OperationsComponent } from './components/operations/operations.component';
 
 export const routes: Routes = [
   {
-    title: 'Dasboard',
+    title: 'Le tue carte',
     path: '',
-    component: DashboardComponent,
+    pathMatch: 'full',
+    component: CardsComponent,
   },
   {
-    title: 'Wallet',
-    path: 'wallet',
-    component: WalletComponent,
+    title: 'Operazioni',
+    path: 'operations',
+    pathMatch: 'full',
+    component: OperationsComponent,
   },
   {
     path: '**',

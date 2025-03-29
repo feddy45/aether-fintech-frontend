@@ -1,20 +1,20 @@
 import { Component, inject, signal } from '@angular/core';
 import { Transaction } from '../../models/transaction';
-import { TransactionComponent } from '../transaction/transaction.component';
-import { CardsSliderComponent } from '../cards-slider/cards-slider.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { CardsSliderComponent } from './cards-slider/cards-slider.component';
 import { Card } from '../../models/card';
 import { CardService } from '../../services/card/card.service';
 
 @Component({
-  selector: 'aef-wallet',
+  selector: 'aef-cards',
   imports: [
     TransactionComponent,
     CardsSliderComponent,
   ],
-  templateUrl: './wallet.component.html',
-  styleUrl: './wallet.component.css',
+  templateUrl: './cards.component.html',
+  styleUrl: './cards.component.css',
 })
-export class WalletComponent {
+export class CardsComponent {
   cardService = inject(CardService);
   transactions = signal<Transaction[]>([]);
 
