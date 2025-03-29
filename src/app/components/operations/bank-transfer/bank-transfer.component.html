@@ -17,8 +17,17 @@
     </div>
     <div class="amount-container">
       <aef-input-label inputId="amount" label="Importo">
-        <p-inputnumber currency="EUR" inputId="amount" locale="it-IT" mode="currency" />
+        <p-inputNumber currency="EUR" inputId="amount" locale="it-IT" mode="currency"></p-inputNumber>
       </aef-input-label>
     </div>
   </div>
+  <div class="third-line">
+    <aef-input-label inputId="description" label="Causale">
+      <textarea id="description" pTextarea rows="2"></textarea>
+    </aef-input-label>
+  </div>
+  <div class="button-container">
+    <p-button severity="primary">Continua</p-button>
+  </div>
+
 </div>
