@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { BaseApiService } from '../base-api/base-api.service';
 import { User } from '../../models/user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,5 +14,9 @@ export class UserService extends BaseApiService<User> {
     birthDate: new Date(1995, 2, 8),
     email: 'feddy45@gmail.com',
   });
+
+  override getAll(): Observable<User[]> {
+    throw new Error('Method not implemented.');
+  }
 
 }

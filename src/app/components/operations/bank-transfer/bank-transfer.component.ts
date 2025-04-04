@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { InputGroup } from 'primeng/inputgroup';
 import { InputText } from 'primeng/inputtext';
 import { InputGroupAddon } from 'primeng/inputgroupaddon';
@@ -16,6 +16,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { TransferService } from '../../../services/transfer/transfer.service';
+import { CardService } from '../../../services/card/card.service';
+import { Card } from '../../../models/card';
+import { DropdownModule } from 'primeng/dropdown';
+import { Select } from 'primeng/select';
+import { BeneficiariesDialogComponent } from './beneficiaries-dialog/beneficiaries-dialog.component';
+import { Contact } from '../../../models/contact';
 
 @Component({
   selector: 'aef-bank-transfer',
@@ -28,22 +34,46 @@ import { TransferService } from '../../../services/transfer/transfer.service';
     InputNumberModule,
     Textarea,
     ReactiveFormsModule,
+    DropdownModule,
+    Select,
+    BeneficiariesDialogComponent,
   ],
   templateUrl: './bank-transfer.component.html',
   styleUrl: './bank-transfer.component.css',
 })
-export class BankTransferComponent {
+export class BankTransferComponent implements OnInit {
   transferService = inject(TransferService);
+  cardService = inject(CardService);
 
   bankTransferForm = new FormGroup({
-    iban: new FormControl(undefined, [Validators.required, this.italianIbanValidator()]),
-    beneficiary: new FormControl(undefined, Validators.required),
-    amount: new FormControl(undefined, Validators.required),
-    description: new FormControl(undefined, Validators.required),
+    card: new FormControl<Card | undefined>(undefined, Validators.required),
+    iban: new FormControl<string | undefined>(undefined, [Validators.required, this.italianIbanValidator()]),
+    beneficiary: new FormControl<string | undefined>(undefined, Validators.required),
+    amount: new FormControl<number | undefined>(undefined, Validators.required),
+    description: new FormControl<string | undefined>(undefined, Validators.required),
   });
 
+  cards = signal<Card[]>([]);
+  showBeneficiaryDialog = signal<boolean>(false);
+
+  ngOnInit(): void {
+    this.cardService.getAll().subscribe(cards => {
+      this.cards.set(cards);
+      this.bankTransferForm.patchValue({ card: cards[0] });
+    });
+  }
+
   onSubmit() {
-    this.transferService.addBankTransfer(this.bankTransferForm.value);
+    this.transferService.addBankTransfer(this.bankTransferForm.value).subscribe((id) =>
+      console.log('inserito bonifico con id: ', id),
+    );
+  }
+
+  beneficiarySelected(beneficiary: Contact) {
+    this.bankTransferForm.patchValue({
+      beneficiary: `${beneficiary.firstName} ${beneficiary.lastName}`,
+      iban: beneficiary.iban,
+    });
   }
 
   private italianIbanValidator(): ValidatorFn {

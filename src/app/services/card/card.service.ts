@@ -19,7 +19,7 @@ interface GetTransactionsResponse {
 export class CardService extends BaseApiService<Card> {
   http = inject(HttpClient);
 
-  override getAll() {
+  getAll() {
     return this.http.get<GetCardsResponse>('/api/cards').pipe(map(res => res.cards));
   }
 

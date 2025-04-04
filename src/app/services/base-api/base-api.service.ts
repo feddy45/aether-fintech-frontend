@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class BaseApiService<T> {
+export abstract class BaseApiService<T> {
 
-  getAll(): Observable<T[]> {
-    return of([]);
-  }
+  abstract getAll(): Observable<T[]>;
 }

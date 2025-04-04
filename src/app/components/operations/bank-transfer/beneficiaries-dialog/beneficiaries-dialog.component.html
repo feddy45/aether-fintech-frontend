@@ -1,0 +1,30 @@
+<p-dialog
+  (onHide)="showChange(false)"
+  (onShow)="showChange(true)"
+  [closable]="false"
+  [draggable]="false"
+  [modal]="true"
+  [resizable]="false"
+  [visible]="showDialog()">
+  <p-table [tableStyle]="{ 'min-width': '50rem' }" [value]="beneficiaries()">
+    <ng-template #header>
+      <tr>
+        <th id="firstname">Nome</th>
+        <th id="lastname">Cognome</th>
+        <th id="iban">Iban</th>
+        <th id="select">Seleziona</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-beneficiary>
+      <tr>
+        <td>{{ beneficiary.firstName }}</td>
+        <td>{{ beneficiary.lastName }}</td>
+        <td>{{ beneficiary.iban }}</td>
+        <td>
+          <p-button (onClick)="buttonClick(beneficiary)">Seleziona</p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</p-dialog>

@@ -13,3 +13,13 @@
     flex: 1;
   }
 }
+
+.first-line {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+
+  & > * {
+    flex: 1;
+  }
+}

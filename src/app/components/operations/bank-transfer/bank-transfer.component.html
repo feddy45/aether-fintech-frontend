@@ -1,11 +1,15 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="bankTransferForm">
   <div class="container">
     <div class="first-line">
+      <aef-input-label inputId="card" label="Seleziona una carta">
+        <p-select [options]="cards()" formControlName="card" id="card" optionLabel="description" />
+      </aef-input-label>
       <aef-input-label inputId="beneficiary" label="Beneficiario">
         <p-inputgroup>
           <input formControlName="beneficiary" id="beneficiary" pInputText />
           <p-inputgroup-addon>
-            <p-button icon="pi pi-address-book" severity="secondary" variant="text" />
+            <p-button (onClick)="showBeneficiaryDialog.set(true)" icon="pi pi-address-book" severity="secondary"
+                      variant="text" />
           </p-inputgroup-addon>
         </p-inputgroup>
       </aef-input-label>
@@ -33,3 +37,5 @@
     </div>
   </div>
 </form>
+
+<aef-beneficiaries-dialog (selectBeneficiary)="beneficiarySelected($event)" [(showDialog)]="showBeneficiaryDialog" />
