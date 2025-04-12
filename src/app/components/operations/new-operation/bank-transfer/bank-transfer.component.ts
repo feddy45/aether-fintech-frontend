@@ -3,7 +3,7 @@ import { InputGroup } from 'primeng/inputgroup';
 import { InputText } from 'primeng/inputtext';
 import { InputGroupAddon } from 'primeng/inputgroupaddon';
 import { Button } from 'primeng/button';
-import { InputLabelComponent } from '../../shared/input-label/input-label.component';
+import { InputLabelComponent } from '../../../shared/input-label/input-label.component';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { Textarea } from 'primeng/textarea';
 import {
@@ -15,13 +15,14 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { TransferService } from '../../../services/transfer/transfer.service';
-import { CardService } from '../../../services/card/card.service';
-import { Card } from '../../../models/card';
+import { TransferService } from '../../../../services/transfer/transfer.service';
+import { CardService } from '../../../../services/card/card.service';
+import { Card } from '../../../../models/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { Select } from 'primeng/select';
 import { BeneficiariesDialogComponent } from './beneficiaries-dialog/beneficiaries-dialog.component';
-import { Contact } from '../../../models/contact';
+import { Contact } from '../../../../models/contact';
+import { BankTransferCreate } from '../../../../models/bank-transfer';
 
 @Component({
   selector: 'aef-bank-transfer',
@@ -64,9 +65,19 @@ export class BankTransferComponent implements OnInit {
   }
 
   onSubmit() {
-    this.transferService.addBankTransfer(this.bankTransferForm.value).subscribe((id) =>
-      console.log('inserito bonifico con id: ', id),
-    );
+    if (this.bankTransferForm.value) {
+      const cardRequest: BankTransferCreate = {
+        cardId: this.bankTransferForm.value.card?.id,
+        iban: this.bankTransferForm.value.iban!,
+        beneficiary: this.bankTransferForm.value.beneficiary!,
+        amount: this.bankTransferForm.value.amount!,
+        description: this.bankTransferForm.value.description!,
+      };
+
+      this.transferService.addBankTransfer(cardRequest).subscribe((id) =>
+        console.log('inserito bonifico con id: ', id),
+      );
+    }
   }
 
   beneficiarySelected(beneficiary: Contact) {

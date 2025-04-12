@@ -1,8 +1,8 @@
 import { Component, inject, model, OnInit, output, signal } from '@angular/core';
 import { Dialog } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
-import { ContactsService } from '../../../../services/contacts/contacts.service';
-import { Contact } from '../../../../models/contact';
+import { ContactsService } from '../../../../../services/contacts/contacts.service';
+import { Contact } from '../../../../../models/contact';
 import { Button } from 'primeng/button';
 
 @Component({

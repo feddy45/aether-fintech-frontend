@@ -1,14 +1,8 @@
-<p-tabs value="0">
-  <p-tablist>
-    <p-tab value="0">Bonifico</p-tab>
-    <p-tab value="1">Giroconto</p-tab>
-  </p-tablist>
-  <p-tabpanels>
-    <p-tabpanel value="0">
-      <aef-bank-transfer />
-    </p-tabpanel>
-    <p-tabpanel value="1">
-      <aef-internal-transfer />
-    </p-tabpanel>
-  </p-tabpanels>
-</p-tabs>
+<h2>Storico operazioni</h2>
+<p-button (onClick)="newOperation()" [label]="'Nuova operazione'" icon="pi pi-plus" severity="primary" />
+@for (transfer of transfers(); track transfer.id) {
+  <div class="transfer-container">
+    {{ transfer.description }}
+  </div>
+}
+

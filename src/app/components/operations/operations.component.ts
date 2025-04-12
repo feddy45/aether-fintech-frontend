@@ -1,22 +1,30 @@
-import { Component } from '@angular/core';
-import { Tab, TabList, TabPanel, TabPanels, Tabs } from 'primeng/tabs';
-import { BankTransferComponent } from './bank-transfer/bank-transfer.component';
-import { InternalTransferComponent } from './internal-transfer/internal-transfer.component';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { TransferService } from '../../services/transfer/transfer.service';
+import { BankTransfer } from '../../models/bank-transfer';
+import { Button } from 'primeng/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'aef-operations',
   imports: [
-    Tabs,
-    TabList,
-    Tab,
-    TabPanels,
-    TabPanel,
-    BankTransferComponent,
-    InternalTransferComponent,
+    Button,
   ],
   templateUrl: './operations.component.html',
   styleUrl: './operations.component.css',
 })
-export class OperationsComponent {
+export class OperationsComponent implements OnInit {
+  router = inject(Router);
 
+  transferService = inject(TransferService);
+  transfers = signal<BankTransfer[]>([]);
+
+  ngOnInit() {
+    this.transferService.getAll().subscribe((transfers) => {
+      this.transfers.set(transfers);
+    });
+  }
+
+  newOperation() {
+    this.router.navigate(['/operations/new-operation']).then();
+  }
 }

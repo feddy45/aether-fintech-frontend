@@ -1,6 +1,11 @@
 import { inject, Injectable } from '@angular/core';
-import { BankTransfer } from '../../models/bank-transfer';
 import { HttpClient } from '@angular/common/http';
+import { BankTransfer, BankTransferCreate } from '../../models/bank-transfer';
+import { map } from 'rxjs';
+
+interface GetTransfersResponse {
+  transfers: BankTransfer[];
+}
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +13,13 @@ import { HttpClient } from '@angular/common/http';
 export class TransferService {
   http = inject(HttpClient);
 
-  addBankTransfer(value: BankTransfer) {
+  addBankTransfer(value: BankTransferCreate) {
     return this.http.post('/api/transfers', value);
+  }
+
+  getAll() {
+    return this.http.get<GetTransfersResponse>('/api/transfers').pipe(map((response: GetTransfersResponse) =>
+      response.transfers,
+    ));
   }
 }
