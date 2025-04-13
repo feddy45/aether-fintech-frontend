@@ -1,8 +1,25 @@
-<h2>Storico operazioni</h2>
-<p-button (onClick)="newOperation()" [label]="'Nuova operazione'" icon="pi pi-plus" severity="primary" />
-@for (transfer of transfers(); track transfer.id) {
-  <div class="transfer-container">
-    {{ transfer.description }}
-  </div>
-}
+<div class="header">
+  <h2>Storico operazioni</h2>
+  <p-button (onClick)="newOperation()" [label]="'Nuova operazione'" icon="pi pi-plus" severity="primary" />
+</div>
+<div class="transfers-container">
+  <p-table [value]="transfers()">
+    <ng-template #header>
+      <tr>
+        <th id="operation-id">Data</th>
+        <th id="operation-description">Causale</th>
+        <th id="operation-amount">Importo</th>
+        <th id="operation-beneficiary">Beneficiario</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-transfer>
+      <tr>
+        <td>{{ transfer.date | date:'dd MMMM yyyy' }}</td>
+        <td>{{ transfer.description }}</td>
+        <td>{{ transfer.amount | currency: 'EUR' }}</td>
+        <td>{{ transfer.beneficiary }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
 

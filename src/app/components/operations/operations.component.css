@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.transfers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
