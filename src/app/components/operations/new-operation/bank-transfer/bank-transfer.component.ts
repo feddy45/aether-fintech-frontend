@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, output, signal } from '@angular/core';
 import { InputGroup } from 'primeng/inputgroup';
 import { InputText } from 'primeng/inputtext';
 import { InputGroupAddon } from 'primeng/inputgroupaddon';
@@ -56,6 +56,7 @@ export class BankTransferComponent implements OnInit {
 
   cards = signal<Card[]>([]);
   showBeneficiaryDialog = signal<boolean>(false);
+  insertedCorrectly = output();
 
   ngOnInit(): void {
     this.cardService.getAll().subscribe(cards => {
@@ -74,8 +75,8 @@ export class BankTransferComponent implements OnInit {
         description: this.bankTransferForm.value.description!,
       };
 
-      this.transferService.addBankTransfer(cardRequest).subscribe((id) =>
-        console.log('inserito bonifico con id: ', id),
+      this.transferService.addBankTransfer(cardRequest).subscribe(() =>
+        this.insertedCorrectly.emit(),
       );
     }
   }
