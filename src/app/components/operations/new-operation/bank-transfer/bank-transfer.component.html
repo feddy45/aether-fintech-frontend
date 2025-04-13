@@ -33,9 +33,18 @@
       </aef-input-label>
     </div>
     <div class="button-container">
-      <p-button [disabled]="!bankTransferForm.valid" severity="primary" type="submit">Continua</p-button>
+      <p-button [disabled]="!bankTransferForm.valid" severity="primary" type="submit">Inserisci bonifico</p-button>
     </div>
   </div>
 </form>
 
 <aef-beneficiaries-dialog (selectBeneficiary)="beneficiarySelected($event)" [(showDialog)]="showBeneficiaryDialog" />
+
+<p-dialog [(visible)]="dialogVisible" [modal]="true" [style]="{ width: '25rem' }"
+          header="Bonifico inserito con successo!">
+  <span class="p-text-secondary block mb-8">Vuoi inserire un nuovo bonifico o tornare alla schermata dell'elenco delle operazioni?</span>
+  <div class="flex justify-end gap-2">
+    <p-button (click)="goToOperationList()" label="Lista operazioni" severity="secondary" />
+    <p-button (click)="newOperation()" label="Nuovo bonifico" />
+  </div>
+</p-dialog>

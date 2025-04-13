@@ -5,7 +5,7 @@
   </p-tablist>
   <p-tabpanels>
     <p-tabpanel value="0">
-      <aef-bank-transfer (insertedCorrectly)="dialogVisible.set(true)" />
+      <aef-bank-transfer />
     </p-tabpanel>
     <p-tabpanel value="1">
       <aef-internal-transfer />
@@ -14,11 +14,3 @@
 </p-tabs>
 
 
-<p-dialog [(visible)]="dialogVisible" [modal]="true" [style]="{ width: '25rem' }"
-          header="Bonifico inserito con successo!">
-  <span class="p-text-secondary block mb-8">Vuoi inserire un nuovo bonifico o tornare alla schermata dell'elenco delle operazioni?</span>
-  <div class="flex justify-end gap-2">
-    <p-button (click)="goToOperationList()" label="Lista operazioni" severity="secondary" />
-    <p-button (click)="newOperation()" label="Nuovo bonifico" />
-  </div>
-</p-dialog>

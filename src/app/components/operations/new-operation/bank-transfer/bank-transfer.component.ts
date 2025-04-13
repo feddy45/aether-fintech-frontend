@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, output, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { InputGroup } from 'primeng/inputgroup';
 import { InputText } from 'primeng/inputtext';
 import { InputGroupAddon } from 'primeng/inputgroupaddon';
@@ -23,6 +23,8 @@ import { Select } from 'primeng/select';
 import { BeneficiariesDialogComponent } from './beneficiaries-dialog/beneficiaries-dialog.component';
 import { Contact } from '../../../../models/contact';
 import { BankTransferCreate } from '../../../../models/bank-transfer';
+import { Dialog } from 'primeng/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'aef-bank-transfer',
@@ -38,6 +40,7 @@ import { BankTransferCreate } from '../../../../models/bank-transfer';
     DropdownModule,
     Select,
     BeneficiariesDialogComponent,
+    Dialog,
   ],
   templateUrl: './bank-transfer.component.html',
   styleUrl: './bank-transfer.component.css',
@@ -45,6 +48,7 @@ import { BankTransferCreate } from '../../../../models/bank-transfer';
 export class BankTransferComponent implements OnInit {
   transferService = inject(TransferService);
   cardService = inject(CardService);
+  router = inject(Router);
 
   bankTransferForm = new FormGroup({
     card: new FormControl<Card | undefined>(undefined, Validators.required),
@@ -56,13 +60,22 @@ export class BankTransferComponent implements OnInit {
 
   cards = signal<Card[]>([]);
   showBeneficiaryDialog = signal<boolean>(false);
-  insertedCorrectly = output();
+  dialogVisible = signal<boolean>(false);
 
   ngOnInit(): void {
     this.cardService.getAll().subscribe(cards => {
       this.cards.set(cards);
       this.bankTransferForm.patchValue({ card: cards[0] });
     });
+  }
+
+  newOperation() {
+    this.bankTransferForm.reset();
+    this.dialogVisible.set(false);
+  }
+
+  goToOperationList() {
+    this.router.navigate(['/operations']).then();
   }
 
   onSubmit() {
@@ -76,7 +89,7 @@ export class BankTransferComponent implements OnInit {
       };
 
       this.transferService.addBankTransfer(cardRequest).subscribe(() =>
-        this.insertedCorrectly.emit(),
+        this.dialogVisible.set(true),
       );
     }
   }
