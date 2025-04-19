@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+  <div class="login-container">
+    <aef-input-label inputId="username" label="Username">
+      <input formControlName="username" id="username" pInputText />
+    </aef-input-label>
+    <aef-input-label inputId="password" label="Password">
+      <input formControlName="password" id="password" pInputText type="password" />
+    </aef-input-label>
+    <p-button [disabled]="!loginForm.valid" severity="primary" type="submit">Login</p-button>
+  </div>
+</form>

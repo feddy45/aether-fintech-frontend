@@ -79,7 +79,7 @@ export class BankTransferComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.bankTransferForm.value) {
+    if (this.bankTransferForm.valid) {
       const cardRequest: BankTransferCreate = {
         cardId: this.bankTransferForm.value.card?.id,
         iban: this.bankTransferForm.value.iban!,
