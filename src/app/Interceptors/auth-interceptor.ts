@@ -3,14 +3,13 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '../services/authentication/authentication.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthInterceptor implements HttpInterceptor {
   authService = inject(AuthenticationService);
 
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler,
-  ): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.authService.getToken();
     if (token) {
       const cloned = req.clone({
