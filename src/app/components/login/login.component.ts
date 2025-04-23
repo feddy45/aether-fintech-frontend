@@ -5,6 +5,7 @@ import { InputLabelComponent } from '../shared/input-label/input-label.component
 import { InputText } from 'primeng/inputtext';
 import { Button } from 'primeng/button';
 import { Router } from '@angular/router';
+import { Password } from 'primeng/password';
 
 @Component({
   selector: 'aef-login',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
     InputLabelComponent,
     InputText,
     Button,
+    Password,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',

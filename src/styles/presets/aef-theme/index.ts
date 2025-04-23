@@ -95,6 +95,20 @@ export default {
       extraLarge: '12px',
     },
   },
+  components: {
+    password: {
+      css: () => `
+        .p-password .p-component .p-inputwrapper {
+          width: 100%;
+          .p-password-input input {
+            width: 100%;
+            outline: none;
+            border: none;
+          }
+        }
+      `,
+    },
+  },
   semantic: {
     colorScheme: {
       light: {
