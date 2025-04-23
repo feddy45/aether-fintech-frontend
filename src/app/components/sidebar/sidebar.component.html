@@ -2,4 +2,5 @@
   @for (item of model; track item.id; let i = $index) {
     <aef-sidebar-item [index]="i" [item]="item" (clickOnMenuItem)="onMenuItemClick($event)" />
   }
+  <p-button (onClick)="logoutClicked()" label="Logout"></p-button>
 </div>

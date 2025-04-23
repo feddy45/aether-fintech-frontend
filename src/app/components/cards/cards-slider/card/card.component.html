@@ -15,7 +15,7 @@
           <p>Validità</p>
         </div>
         <div class="row name">
-          <p>{{ userService.user().firstName }} {{ userService.user().lastName }}</p>
+          <p>{{ authService.user()?.firstName }} {{ authService.user()?.lastName }}</p>
           <p>{{ card().expirationDate | date: 'MM / YY' }}</p>
         </div>
       </div>

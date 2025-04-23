@@ -1,5 +1,4 @@
 import { inject, Injectable } from '@angular/core';
-import { BaseApiService } from '../base-api/base-api.service';
 import { Contact } from '../../models/contact';
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +10,7 @@ interface GetContactsResponse {
 @Injectable({
   providedIn: 'root',
 })
-export class ContactsService extends BaseApiService<Contact> {
+export class ContactsService {
   http = inject(HttpClient);
 
   getAll(): Observable<Contact[]> {

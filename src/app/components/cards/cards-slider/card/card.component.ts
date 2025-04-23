@@ -1,7 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { Card } from '../../../../models/card';
-import { UserService } from '../../../../services/user/user.service';
 import { DatePipe } from '@angular/common';
+import { AuthenticationService } from '../../../../services/authentication/authentication.service';
 
 @Component({
   selector: 'aef-card',
@@ -12,8 +12,7 @@ import { DatePipe } from '@angular/common';
   styleUrl: './card.component.css',
 })
 export class CardComponent {
-  userService = inject(UserService);
-
+  authService = inject(AuthenticationService);
   card = input.required<Card>();
   cardNumberSplit = computed(() => this.card().number.match(/.{1,4}/g));
 }

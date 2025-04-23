@@ -31,16 +31,7 @@ export class LoginComponent {
         username: this.loginForm.value.username,
         password: this.loginForm.value.password,
       };
-      this.authenticationService.login(loginRequest).subscribe({
-        next: (response) => {
-          console.log('Login successful', response);
-          this.authenticationService.setToken(response.token.token);
-          this.router.navigate(['/']);
-        },
-        error: (error) => {
-          console.error('Login failed', error);
-        },
-      });
+      this.authenticationService.login(loginRequest);
     }
   }
 }

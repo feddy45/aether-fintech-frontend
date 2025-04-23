@@ -1,5 +1,4 @@
 import { inject, Injectable } from '@angular/core';
-import { BaseApiService } from '../base-api/base-api.service';
 import { Card } from '../../models/card';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
@@ -16,7 +15,7 @@ interface GetTransactionsResponse {
 @Injectable({
   providedIn: 'root',
 })
-export class CardService extends BaseApiService<Card> {
+export class CardService {
   http = inject(HttpClient);
 
   getAll() {
