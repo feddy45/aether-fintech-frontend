@@ -12,7 +12,10 @@
       </div>
       <div class="input-container">
         <aef-input-label inputId="password" label="Password">
-          <p-password [feedback]="false" [toggleMask]="true" formControlName="password" id="password" />
+          <p-password [feedback]="false" [inputStyle]="{outline: 'none', border: 'none', width: '100%'}"
+                      [style]="{  width: '100%'}"
+                      [toggleMask]="true"
+                      formControlName="password" id="password" />
         </aef-input-label>
       </div>
       <div class="button-container">
