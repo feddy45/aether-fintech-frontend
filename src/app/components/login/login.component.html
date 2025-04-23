@@ -1,11 +1,25 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-  <div class="login-container">
-    <aef-input-label inputId="username" label="Username">
-      <input formControlName="username" id="username" pInputText />
-    </aef-input-label>
-    <aef-input-label inputId="password" label="Password">
-      <input formControlName="password" id="password" pInputText type="password" />
-    </aef-input-label>
-    <p-button [disabled]="!loginForm.valid" severity="primary" type="submit">Login</p-button>
-  </div>
-</form>
+<div class="login-body">
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <div class="login-container">
+      <div class="logo">
+        <img alt="Logo" src="images/AEF_no_bg.png" />
+      </div>
+      <div class="input-container">
+        <aef-input-label inputId="username" label="Username">
+          <input formControlName="username" id="username" pInputText />
+        </aef-input-label>
+      </div>
+      <div class="input-container">
+        <aef-input-label inputId="password" label="Password">
+          <input formControlName="password" id="password" pInputText type="password" />
+        </aef-input-label>
+      </div>
+      <div class="button-container">
+        <p-button [disabled]="!loginForm.valid" severity="info" size="large" type="submit">
+          Login
+        </p-button>
+      </div>
+    </div>
+  </form>
+</div>
