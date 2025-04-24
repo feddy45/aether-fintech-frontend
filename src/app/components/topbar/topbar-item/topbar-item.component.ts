@@ -4,14 +4,14 @@ import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'aef-sidebar-item',
+  selector: 'aef-topbar-item',
   imports: [
     NgClass,
   ],
-  templateUrl: './sidebar-item.component.html',
-  styleUrl: './sidebar-item.component.css',
+  templateUrl: './topbar-item.component.html',
+  styleUrl: './topbar-item.component.css',
 })
-export class SidebarItemComponent {
+export class TopbarItemComponent {
   router = inject(Router);
   item = input.required<MenuItem>();
   index = input.required<number>();

@@ -1,20 +1,20 @@
 import { Component, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { SidebarItemComponent } from './sidebar-item/sidebar-item.component';
 import { Router } from '@angular/router';
 import { Button } from 'primeng/button';
 import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { TopbarItemComponent } from './topbar-item/topbar-item.component';
 
 @Component({
-  selector: 'aef-sidebar',
+  selector: 'aef-topbar',
   imports: [
-    SidebarItemComponent,
     Button,
+    TopbarItemComponent,
   ],
-  templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css',
+  templateUrl: './topbar.component.html',
+  styleUrl: './topbar.component.css',
 })
-export class SidebarComponent {
+export class TopbarComponent {
   authService = inject(AuthenticationService);
   router = inject(Router);
   model: MenuItem[] = [

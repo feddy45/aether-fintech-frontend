@@ -1,0 +1,31 @@
+.topbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.topbar-left,
+.topbar-right,
+.topbar-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.topbar-center {
+  justify-content: center;
+}
+
+.topbar-right {
+  justify-content: flex-end;
+}
+
+.topbar-items-container {
+  display: flex;
+  gap: 8px;
+}
+
+.logo img {
+  height: 60px;
+}

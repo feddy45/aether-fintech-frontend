@@ -1,0 +1,19 @@
+<div class="topbar-container">
+  <div class="topbar-left">
+    <div class="topbar-items-container">
+      @for (item of model; track item.id; let i = $index) {
+        <aef-topbar-item [index]="i" [item]="item" (clickOnMenuItem)="onMenuItemClick($event)" />
+      }
+    </div>
+  </div>
+
+  <div class="topbar-center">
+    <div class="logo">
+      <img alt="Logo" src="images/AEF_no_bg.png" />
+    </div>
+  </div>
+
+  <div class="topbar-right">
+    <p-button (onClick)="logoutClicked()" label="Logout"></p-button>
+  </div>
+</div>

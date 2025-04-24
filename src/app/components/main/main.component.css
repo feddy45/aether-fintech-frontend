@@ -1,20 +1,19 @@
 .aef-container {
   background: var(--aef-neutral-light5);
   display: flex;
+  flex-direction: column;
   height: 100vh;
 }
 
 .aef-content-container {
   background: var(--aef-neutral-light5);
   height: 100%;
+  overflow-y: auto;
   padding: 16px;
-  overflow-y: scroll;
   width: 100%;
 }
 
-.aef-sidebar-container {
-  margin: 16px;
+.aef-topbar-container {
   background: var(--aef-basic-white);
-  border-radius: var(--aef-border-radius-extra-large);
-  width: 400px;
+  width: 100%;
 }

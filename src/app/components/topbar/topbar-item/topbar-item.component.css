@@ -1,4 +1,4 @@
-.sidebar-item-container {
+.topbar-item-container {
   align-items: center;
   border-radius: var(--aef-border-radius-small);
   display: flex;
@@ -16,6 +16,6 @@
   }
 }
 
-.sidebar-item {
+.topbar-item {
   padding: 16px;
 }
