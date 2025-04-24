@@ -16,8 +16,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { TransferService } from '../../../../services/transfer/transfer.service';
-import { CardService } from '../../../../services/card/card.service';
-import { Card } from '../../../../models/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { Select } from 'primeng/select';
 import { BeneficiariesDialogComponent } from './beneficiaries-dialog/beneficiaries-dialog.component';
@@ -25,6 +23,8 @@ import { Contact } from '../../../../models/contact';
 import { BankTransferCreate } from '../../../../models/bank-transfer';
 import { Dialog } from 'primeng/dialog';
 import { Router } from '@angular/router';
+import { BankAccountService } from '../../../../services/bank-account/bank-account.service';
+import { BankAccount } from '../../../../models/bank-account';
 
 @Component({
   selector: 'aef-bank-transfer',
@@ -47,25 +47,25 @@ import { Router } from '@angular/router';
 })
 export class BankTransferComponent implements OnInit {
   transferService = inject(TransferService);
-  cardService = inject(CardService);
+  bankAccountService = inject(BankAccountService);
   router = inject(Router);
 
   bankTransferForm = new FormGroup({
-    card: new FormControl<Card | undefined>(undefined, Validators.required),
+    bankAccount: new FormControl<BankAccount | undefined>(undefined, Validators.required),
     iban: new FormControl<string | undefined>(undefined, [Validators.required, this.italianIbanValidator()]),
     beneficiary: new FormControl<string | undefined>(undefined, Validators.required),
     amount: new FormControl<number | undefined>(undefined, Validators.required),
     description: new FormControl<string | undefined>(undefined, Validators.required),
   });
 
-  cards = signal<Card[]>([]);
+  bankAccounts = signal<BankAccount[]>([]);
   showBeneficiaryDialog = signal<boolean>(false);
   dialogVisible = signal<boolean>(false);
 
   ngOnInit(): void {
-    this.cardService.getAll().subscribe(cards => {
-      this.cards.set(cards);
-      this.bankTransferForm.patchValue({ card: cards[0] });
+    this.bankAccountService.getAll().subscribe(accounts => {
+      this.bankAccounts.set(accounts);
+      this.bankTransferForm.patchValue({ bankAccount: accounts[0] });
     });
   }
 
@@ -81,7 +81,7 @@ export class BankTransferComponent implements OnInit {
   onSubmit() {
     if (this.bankTransferForm.valid) {
       const cardRequest: BankTransferCreate = {
-        cardId: this.bankTransferForm.value.card?.id,
+        bankAccountId: this.bankTransferForm.value.bankAccount?.id,
         iban: this.bankTransferForm.value.iban!,
         beneficiary: this.bankTransferForm.value.beneficiary!,
         amount: this.bankTransferForm.value.amount!,

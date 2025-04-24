@@ -1,5 +1,12 @@
 <div class="container">
-  <aef-bank-accounts-slider (bankAccountSelectedChange)="changeCardSelected($event)" />
+  <aef-bank-accounts-slider (bankAccountSelectedChange)="changeBankAccountSelected($event)" />
+  <h2 class="title">Le tue carte</h2>
+  <div class="cards-container">
+    @for (card of cards(); track card.id) {
+      <aef-card [card]="card" />
+    }
+  </div>
+
   <h2 class="title">Le tue transazioni</h2>
   <div class="transactions-container">
     @for (transaction of transactions(); track transaction.id) {

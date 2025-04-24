@@ -10,7 +10,7 @@ export interface BankTransfer {
 }
 
 export interface BankTransferCreate {
-  cardId?: string;
+  bankAccountId?: string;
   iban?: string;
   beneficiary?: string;
   amount?: number;
