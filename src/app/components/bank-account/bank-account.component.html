@@ -9,8 +9,6 @@
 
   <h2 class="title">Le tue transazioni</h2>
   <div class="transactions-container">
-    @for (transaction of transactions(); track transaction.id) {
-      <aef-transaction [transaction]="transaction" />
-    }
+    <aef-transactions-list [transactions]="transactions()" />
   </div>
 </div>

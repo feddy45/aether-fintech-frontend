@@ -1,19 +1,19 @@
 import { Component, inject, signal } from '@angular/core';
 import { Transaction } from '../../models/transaction';
 import { BankAccountsSliderComponent } from './bank-accounts-slider/bank-accounts-slider.component';
-import { TransactionComponent } from '../transaction/transaction.component';
 import { BankAccountService } from '../../services/bank-account/bank-account.service';
 import { BankAccount } from '../../models/bank-account';
 import { Card } from '../../models/card';
 import { CardComponent } from '../card/card.component';
 import { CardService } from '../../services/card/card.service';
+import { TransactionsListComponent } from './transactions-list/transactions-list.component';
 
 @Component({
   selector: 'aef-bank-account',
   imports: [
     BankAccountsSliderComponent,
-    TransactionComponent,
     CardComponent,
+    TransactionsListComponent,
   ],
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.css',

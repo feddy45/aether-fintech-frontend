@@ -1,0 +1,25 @@
+<p-table [groupRowsByOrder]="0" [scrollable]="true" [value]="transactionComputed()" groupRowsBy="yearMonth"
+         rowGroupMode="subheader">
+  <ng-template pTemplate="header">
+    <tr>
+      <th id="transaction-date">Date</th>
+      <th id="transaction-description">Description</th>
+      <th id="transaction-amount">Amount</th>
+    </tr>
+  </ng-template>
+  <ng-template let-rowData pTemplate="body">
+    <tr>
+      <td>{{ rowData.date | date: 'medium': 'UTC': 'it' }}</td>
+      <td>{{ rowData.description }}</td>
+      <td>{{ rowData.amount | currency: 'EUR' }}</td>
+    </tr>
+  </ng-template>
+  <ng-template let-transaction pTemplate="groupheader">
+    <tr pRowGroupHeader>
+      <td colspan="3">
+        <b>{{ transaction.yearMonthLabel }}</b>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
