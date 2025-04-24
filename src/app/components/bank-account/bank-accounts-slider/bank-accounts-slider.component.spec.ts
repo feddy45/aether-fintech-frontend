@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardsSliderComponent } from './cards-slider.component';
+import { BankAccountsSliderComponent } from './bank-accounts-slider.component';
 
 describe('CardsSliderComponent', () => {
-  let component: CardsSliderComponent;
-  let fixture: ComponentFixture<CardsSliderComponent>;
+  let component: BankAccountsSliderComponent;
+  let fixture: ComponentFixture<BankAccountsSliderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CardsSliderComponent]
+      imports: [BankAccountsSliderComponent],
     })
-    .compileComponents();
+      .compileComponents();
 
-    fixture = TestBed.createComponent(CardsSliderComponent);
+    fixture = TestBed.createComponent(BankAccountsSliderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

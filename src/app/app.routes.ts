@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { CardsComponent } from './components/cards/cards.component';
+import { BankAccountComponent } from './components/bank-account/bank-account.component';
 import { OperationsComponent } from './components/operations/operations.component';
 import { NewOperationComponent } from './components/operations/new-operation/new-operation.component';
 import { AuthenticationGuard } from './guards/authentication-guard';
@@ -16,7 +16,7 @@ export const routes: Routes = [
       {
         title: 'Le tue carte',
         path: '',
-        component: CardsComponent,
+        component: BankAccountComponent,
         canActivate: [AuthenticationGuard],
       },
       {

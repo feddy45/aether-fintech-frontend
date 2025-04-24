@@ -1,7 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
-import { Card } from '../../../../models/card';
+import { Card } from '../../models/card';
 import { DatePipe } from '@angular/common';
-import { AuthenticationService } from '../../../../services/authentication/authentication.service';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
 
 @Component({
   selector: 'aef-card',
