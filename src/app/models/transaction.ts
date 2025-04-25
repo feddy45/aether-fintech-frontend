@@ -3,5 +3,7 @@ export interface Transaction {
   amount: number;
   date: Date;
   description: string;
-  type: string;
+  type: TransactionType;
 }
+
+export type TransactionType = 'income' | 'expense' | 'transfer';

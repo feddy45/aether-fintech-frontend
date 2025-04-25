@@ -1,0 +1,20 @@
+.totals {
+  display: flex;
+  gap: 1rem;
+  font-weight: 600;
+}
+
+.income {
+  color: forestgreen;
+}
+
+.expense {
+  color: crimson;
+}
+
+.row-group {
+  & > td {
+    border-top-width: 2px;
+    border-top-color: var(--aef-neutral-light2);
+  }
+}

@@ -2,22 +2,32 @@
          rowGroupMode="subheader">
   <ng-template pTemplate="header">
     <tr>
-      <th id="transaction-date">Date</th>
-      <th id="transaction-description">Description</th>
-      <th id="transaction-amount">Amount</th>
+      <th [style]="{width: '10%'}" id="transaction-date">Data</th>
+      <th id="transaction-description">Descrizione</th>
+      <th id="transaction-amount">Importo</th>
     </tr>
   </ng-template>
   <ng-template let-rowData pTemplate="body">
     <tr>
-      <td>{{ rowData.date | date: 'medium': 'UTC': 'it' }}</td>
+      <td>{{ rowData.date | date: 'dd MMMM' }}</td>
       <td>{{ rowData.description }}</td>
-      <td>{{ rowData.amount | currency: 'EUR' }}</td>
+      <td
+        [ngClass]="rowData.type === 'income' ? 'income' : 'expense'">{{ correctAmount(rowData.amount, rowData.type) | currency: 'EUR' }}
+      </td>
     </tr>
   </ng-template>
   <ng-template let-transaction pTemplate="groupheader">
-    <tr pRowGroupHeader>
-      <td colspan="3">
+    <tr class="row-group" pRowGroupHeader>
+      <td colspan="2">
         <b>{{ transaction.yearMonthLabel }}</b>
+      </td>
+      <td class="totals">
+        <div class="income">
+          + {{ totalIncomeByYearMonth(transaction.yearMonth) | currency: 'EUR' }}
+        </div>
+        <div class="expense">
+          - {{ totalExpenseByYearMonth(transaction.yearMonth) | currency: 'EUR' }}
+        </div>
       </td>
     </tr>
   </ng-template>

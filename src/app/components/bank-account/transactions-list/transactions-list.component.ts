@@ -2,7 +2,7 @@ import { Component, computed, input } from '@angular/core';
 import { Transaction } from '../../../models/transaction';
 import { TableModule } from 'primeng/table';
 import { getMonthLabeled } from '../../../utils/date';
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'aef-transactions-list',
@@ -10,6 +10,7 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
     TableModule,
     DatePipe,
     CurrencyPipe,
+    NgClass,
   ],
   templateUrl: './transactions-list.component.html',
   styleUrl: './transactions-list.component.css',
@@ -31,5 +32,27 @@ export class TransactionsListComponent {
 
   getYearMonth(date: Date): Date {
     return new Date(date.getFullYear(), date.getMonth(), 1);
+  }
+
+  totalIncomeByYearMonth(yearMonth: string) {
+    return this.transactionComputed().reduce((acc, transaction) => {
+      if (transaction.yearMonth === yearMonth && transaction.type === 'income') {
+        return acc + transaction.amount;
+      }
+      return acc;
+    }, 0);
+  }
+
+  totalExpenseByYearMonth(yearMonth: string) {
+    return this.transactionComputed().reduce((acc, transaction) => {
+      if (transaction.yearMonth === yearMonth && transaction.type === 'expense') {
+        return acc + transaction.amount;
+      }
+      return acc;
+    }, 0);
+  }
+
+  correctAmount(amount: number, type: string): number {
+    return type === 'income' ? amount : -amount;
   }
 }
