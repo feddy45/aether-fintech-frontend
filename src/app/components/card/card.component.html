@@ -1,19 +1,22 @@
 <div class="card">
   <div class="card-inner">
-    <div class="front">
-      <div class="row card-no">
-        @for (number of cardNumberSplit(); track $index; ) {
-          <p>{{ number }}</p>
-        }
-      </div>
-      <div class="row card-holder">
+    <div class="row card-no">
+      @for (number of cardNumberSplit(); track $index; ) {
+        <p>{{ number }}</p>
+      }
+    </div>
+    <div class="row bottom">
+      <div class="holder">
         <p>Intestatario</p>
-        <p>Validità</p>
-      </div>
-      <div class="row name">
         <p>{{ authService.user()?.firstName }} {{ authService.user()?.lastName }}</p>
+      </div>
+      <div class="expiration">
+        <p>Validità</p>
         <p>{{ card().expirationDate | date: 'MM / YY' }}</p>
       </div>
     </div>
+  </div>
+  <div class="description-label">
+    {{ card().description }}
   </div>
 </div>

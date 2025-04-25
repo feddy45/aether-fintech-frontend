@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.container {
+  background-color: var(--aef-basic-white);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+
+.details-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.iban, .balance {
+  font-size: 1.2rem;
+}
+
+.account-name-container {
+  display: flex;
+  justify-content: center;
+}
+
+.account-name-label {
+  font-size: 1.5rem;
+  font-weight: 600;
+}

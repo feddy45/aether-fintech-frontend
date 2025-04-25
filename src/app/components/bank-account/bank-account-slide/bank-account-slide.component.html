@@ -1,11 +1,17 @@
-<div class="container">
-  <div class="account-name">
-    <h2>{{ account().name }}</h2>
-  </div>
-  <div class="iban">
-    <h2>{{ account().iban }}</h2>
-  </div>
-  <div class="balance">
-    <h2>{{ account().balance | currency: 'EUR' }}</h2>
+<div class="wrapper">
+  <div class="container">
+    <div class="account-name-container">
+      <div class="account-name-label">{{ account().name }}</div>
+    </div>
+    <div class="details-container">
+      <div class="iban-container">
+        <div class="iban-label">IBAN</div>
+        <div class="iban">{{ account().iban }}</div>
+      </div>
+      <div class="balance-container">
+        <div class="balance-label">Bilancio</div>
+        <div class="balance">{{ account().balance | currency: 'EUR' }}</div>
+      </div>
+    </div>
   </div>
 </div>
