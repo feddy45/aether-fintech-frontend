@@ -18,7 +18,7 @@ export class TopbarComponent {
   authService = inject(AuthenticationService);
   router = inject(Router);
   model: MenuItem[] = [
-    { id: 'cards', label: 'Le tue carte', icon: 'pi pi-fw pi-wallet', routerLink: '/' },
+    { id: 'bank-account', label: 'Conti', icon: 'pi pi-fw pi-wallet', routerLink: '/' },
     { id: 'operations', label: 'Operazioni', icon: 'pi pi-fw pi-euro', routerLink: '/operations' },
   ];
 

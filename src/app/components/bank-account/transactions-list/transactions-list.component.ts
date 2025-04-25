@@ -18,14 +18,11 @@ export class TransactionsListComponent {
   transactions = input<Transaction[]>([]);
   transactionComputed = computed(() => {
 
-    const pippo = this.transactions().map(transaction => ({
+    return this.transactions().map(transaction => ({
       ...transaction,
       yearMonth: this.getYearMonth(new Date(transaction.date)).toISOString(),
       yearMonthLabel: this.getMonthLabel(new Date(transaction.date)),
     }));
-
-    console.log(pippo);
-    return pippo;
   });
 
   getMonthLabel(date: Date): string {

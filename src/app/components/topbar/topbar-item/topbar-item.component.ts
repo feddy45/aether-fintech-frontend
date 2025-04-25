@@ -1,7 +1,8 @@
-import { Component, computed, inject, input, output } from '@angular/core';
+import { Component, inject, input, OnDestroy, OnInit, output, signal } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'aef-topbar-item',
@@ -11,13 +12,27 @@ import { NgClass } from '@angular/common';
   templateUrl: './topbar-item.component.html',
   styleUrl: './topbar-item.component.css',
 })
-export class TopbarItemComponent {
+export class TopbarItemComponent implements OnInit, OnDestroy {
   router = inject(Router);
   item = input.required<MenuItem>();
   index = input.required<number>();
   clickOnMenuItem = output<MenuItem>();
 
-  isActive = computed(() =>
-    this.router.url.includes(this.item().routerLink),
-  );
+  isActive = signal<boolean>(false);
+  routerSubscription: Subscription = new Subscription();
+
+  ngOnInit() {
+    this.selectItemByCurrentRoute();
+    this.routerSubscription = this.router.events.subscribe(() => {
+      this.selectItemByCurrentRoute();
+    });
+  }
+
+  selectItemByCurrentRoute() {
+    this.isActive.set(this.router.url === this.item().routerLink);
+  }
+
+  ngOnDestroy() {
+    this.routerSubscription.unsubscribe();
+  }
 }

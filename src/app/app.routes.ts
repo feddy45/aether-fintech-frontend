@@ -14,7 +14,7 @@ export const routes: Routes = [
     canActivate: [AuthenticationGuard],
     children: [
       {
-        title: 'Le tue carte',
+        title: 'I tuoi conti',
         path: '',
         component: BankAccountComponent,
         canActivate: [AuthenticationGuard],
