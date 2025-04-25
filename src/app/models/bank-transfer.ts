@@ -1,8 +1,8 @@
-import { Card } from './card';
+import { BankAccount } from './bank-account';
 
 export interface BankTransfer {
   id: string;
-  card?: Card | null;
+  bankAccount?: BankAccount | null;
   iban?: string | null;
   beneficiary?: string | null;
   amount?: number | null;

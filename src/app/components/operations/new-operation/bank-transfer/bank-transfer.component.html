@@ -1,7 +1,7 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="bankTransferForm">
   <div class="container">
     <div class="first-line">
-      <aef-input-label inputId="card" label="Seleziona il conto corrente">
+      <aef-input-label inputId="bankAccount" label="Seleziona il conto corrente">
         <p-select [options]="bankAccounts()" formControlName="bankAccount" id="bankAccount" optionLabel="name">
           <ng-template let-bankAccount pTemplate="item">
             <div class="bank-account-container">

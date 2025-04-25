@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 100%;
+}
+
+.second-line {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+
+  & > div {
+    flex: 1;
+  }
+}
+
+.first-line {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+
+  & > * {
+    flex: 1;
+  }
+}
+
+.bank-account-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
