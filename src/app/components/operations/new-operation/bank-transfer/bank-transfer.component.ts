@@ -25,6 +25,7 @@ import { Dialog } from 'primeng/dialog';
 import { Router } from '@angular/router';
 import { BankAccountService } from '../../../../services/bank-account/bank-account.service';
 import { BankAccount } from '../../../../models/bank-account';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'aef-bank-transfer',
@@ -41,6 +42,7 @@ import { BankAccount } from '../../../../models/bank-account';
     Select,
     BeneficiariesDialogComponent,
     Dialog,
+    CurrencyPipe,
   ],
   templateUrl: './bank-transfer.component.html',
   styleUrl: './bank-transfer.component.css',

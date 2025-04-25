@@ -1,8 +1,19 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="bankTransferForm">
   <div class="container">
     <div class="first-line">
-      <aef-input-label inputId="card" label="Seleziona una carta">
-        <p-select [options]="bankAccounts()" formControlName="bankAccount" id="card" optionLabel="description" />
+      <aef-input-label inputId="card" label="Seleziona il conto corrente">
+        <p-select [options]="bankAccounts()" formControlName="bankAccount" id="bankAccount" optionLabel="name">
+          <ng-template let-bankAccount pTemplate="item">
+            <div class="bank-account-container">
+              <div class="bank-account-text">
+                {{ bankAccount.name }}
+              </div>
+              <div class="bank-account-balance">
+                Disponibilità: {{ bankAccount.balance | currency: 'EUR' }}
+              </div>
+            </div>
+          </ng-template>
+        </p-select>
       </aef-input-label>
       <aef-input-label inputId="beneficiary" label="Beneficiario">
         <p-inputgroup>
