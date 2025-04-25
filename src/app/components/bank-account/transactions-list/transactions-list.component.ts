@@ -45,7 +45,7 @@ export class TransactionsListComponent {
 
   totalExpenseByYearMonth(yearMonth: string) {
     return this.transactionComputed().reduce((acc, transaction) => {
-      if (transaction.yearMonth === yearMonth && transaction.type === 'expense') {
+      if (transaction.yearMonth === yearMonth && (transaction.type === 'expense' || transaction.type === 'transfer')) {
         return acc + transaction.amount;
       }
       return acc;
