@@ -27,6 +27,10 @@ export class AuthenticationService {
   user = signal<User | undefined>(undefined);
   private readonly tokenKey = 'auth_token';
 
+  constructor() {
+    this.setUserByToken();
+  }
+
   setToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
   }
@@ -47,7 +51,7 @@ export class AuthenticationService {
     this.http.post<LoginResponse>('/api/auth/login', loginRequest).subscribe({
       next: (response) => {
         this.setToken(response.token.token);
-        this.setUserByToken(response.token.token);
+        this.setUserByToken();
         this.router.navigate(['/']);
       },
       error: (error) => {
@@ -63,9 +67,12 @@ export class AuthenticationService {
     this.user.set(undefined);
   }
 
-  private setUserByToken(token: string) {
-    const decodedJwt = jwtDecode<AefJwtPayload>(token);
-    this.setUser(decodedJwt);
+  private setUserByToken() {
+    const token = this.getToken();
+    if (token) {
+      const decodedJwt = jwtDecode<AefJwtPayload>(token);
+      this.setUser(decodedJwt);
+    }
   }
 
   private setUser(decodedJwt: AefJwtPayload) {

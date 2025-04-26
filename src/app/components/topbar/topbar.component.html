@@ -14,6 +14,18 @@
   </div>
 
   <div class="topbar-right">
-    <p-button (onClick)="logoutClicked()" label="Logout"></p-button>
+    <p-button (click)="menu.toggle($event)" [rounded]="true" icon="pi pi-user" severity="info" size="large" />
+    <p-menu #menu [model]="items" [popup]="true">
+      <ng-template pTemplate="start">
+        <div class="user-container">
+          <p-avatar [label]="getUserLabel()"
+                    shape="circle" />
+          <div class="user-text">
+            <span class="font-bold">{{ authService.user()?.firstName }}</span>
+            <span class="text-sm">{{ authService.user()?.lastName }}</span>
+          </div>
+        </div>
+      </ng-template>
+    </p-menu>
   </div>
 </div>
