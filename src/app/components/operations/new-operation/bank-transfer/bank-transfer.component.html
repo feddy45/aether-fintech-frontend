@@ -1,20 +1,10 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="bankTransferForm">
   <div class="container">
     <div class="first-line">
-      <aef-input-label inputId="bankAccount" label="Seleziona il conto corrente">
-        <p-select [options]="bankAccounts()" formControlName="bankAccount" id="bankAccount" optionLabel="name">
-          <ng-template let-bankAccount pTemplate="item">
-            <div class="bank-account-container">
-              <div class="bank-account-text">
-                {{ bankAccount.name }}
-              </div>
-              <div class="bank-account-balance">
-                Disponibilità: {{ bankAccount.balance | currency: 'EUR' }}
-              </div>
-            </div>
-          </ng-template>
-        </p-select>
-      </aef-input-label>
+      <aef-bank-account-select [formControlName]="'bankAccount'"
+                               inputId="bankAccount"
+                               label="Seleziona il conto corrente" />
+
       <aef-input-label inputId="beneficiary" label="Beneficiario">
         <p-inputgroup>
           <input formControlName="beneficiary" id="beneficiary" pInputText />
@@ -51,11 +41,9 @@
 
 <aef-beneficiaries-dialog (selectBeneficiary)="beneficiarySelected($event)" [(showDialog)]="showBeneficiaryDialog" />
 
-<p-dialog [(visible)]="dialogVisible" [modal]="true" [style]="{ width: '25rem' }"
-          header="Bonifico inserito con successo!">
-  <span class="p-text-secondary block mb-8">Vuoi inserire un nuovo bonifico o tornare alla schermata dell'elenco delle operazioni?</span>
-  <div class="flex justify-end gap-2">
-    <p-button (click)="goToOperationList()" label="Lista operazioni" severity="secondary" />
-    <p-button (click)="newOperation()" label="Nuovo bonifico" />
-  </div>
-</p-dialog>
+<aef-success-dialog (newOperationClicked)="newOperation()"
+                    [(dialogVisible)]="successDialogVisible"
+                    bodyText="Vuoi inserire un nuovo bonifico o tornare alla schermata dell'elenco delle operazioni?"
+                    headerText="Bonifico inserito con successo!"
+                    primaryButtonText="Nuovo bonifico"
+/>

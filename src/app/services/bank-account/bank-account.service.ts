@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { Transaction } from '../../models/transaction';
@@ -16,7 +16,13 @@ interface GetTransactionsResponse {
   providedIn: 'root',
 })
 export class BankAccountService {
-  http = inject(HttpClient);
+  userBankAccounts = signal<BankAccount[]>([]);
+
+  constructor(private readonly http: HttpClient) {
+    this.getAll().subscribe(response => {
+      this.userBankAccounts.set(response);
+    });
+  }
 
   getAll() {
     return this.http.get<GetBankAccountsResponse>('/api/bank-accounts').pipe(map(res => res.bankAccounts));

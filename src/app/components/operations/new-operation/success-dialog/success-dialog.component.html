@@ -1,0 +1,8 @@
+<p-dialog [(visible)]="dialogVisible" [header]="headerText()" [modal]="true"
+          [style]="{ width: '25rem' }">
+  <span class="p-text-secondary block mb-8">{{ bodyText() }}</span>
+  <div class="flex justify-end gap-2">
+    <p-button (click)="goToOperationList()" label="Lista operazioni" severity="secondary" />
+    <p-button (click)="newOperationClicked.emit()" [label]="primaryButtonText()" />
+  </div>
+</p-dialog>

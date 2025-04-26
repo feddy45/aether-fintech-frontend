@@ -17,15 +17,14 @@ import {
 } from '@angular/forms';
 import { TransferService } from '../../../../services/transfer/transfer.service';
 import { DropdownModule } from 'primeng/dropdown';
-import { Select } from 'primeng/select';
 import { BeneficiariesDialogComponent } from './beneficiaries-dialog/beneficiaries-dialog.component';
 import { Contact } from '../../../../models/contact';
 import { BankTransferCreate } from '../../../../models/bank-transfer';
-import { Dialog } from 'primeng/dialog';
 import { Router } from '@angular/router';
 import { BankAccountService } from '../../../../services/bank-account/bank-account.service';
 import { BankAccount } from '../../../../models/bank-account';
-import { CurrencyPipe } from '@angular/common';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { BankAccountSelectComponent } from '../bank-account-select/bank-account-select.component';
 
 @Component({
   selector: 'aef-bank-transfer',
@@ -39,10 +38,9 @@ import { CurrencyPipe } from '@angular/common';
     Textarea,
     ReactiveFormsModule,
     DropdownModule,
-    Select,
     BeneficiariesDialogComponent,
-    Dialog,
-    CurrencyPipe,
+    SuccessDialogComponent,
+    BankAccountSelectComponent,
   ],
   templateUrl: './bank-transfer.component.html',
   styleUrl: './bank-transfer.component.css',
@@ -62,7 +60,7 @@ export class BankTransferComponent implements OnInit {
 
   bankAccounts = signal<BankAccount[]>([]);
   showBeneficiaryDialog = signal<boolean>(false);
-  dialogVisible = signal<boolean>(false);
+  successDialogVisible = signal<boolean>(false);
 
   ngOnInit(): void {
     this.bankAccountService.getAll().subscribe(accounts => {
@@ -73,12 +71,9 @@ export class BankTransferComponent implements OnInit {
 
   newOperation() {
     this.bankTransferForm.reset();
-    this.dialogVisible.set(false);
+    this.successDialogVisible.set(false);
   }
 
-  goToOperationList() {
-    this.router.navigate(['/operations']).then();
-  }
 
   onSubmit() {
     if (this.bankTransferForm.valid) {
@@ -91,7 +86,7 @@ export class BankTransferComponent implements OnInit {
       };
 
       this.transferService.addBankTransfer(cardRequest).subscribe(() =>
-        this.dialogVisible.set(true),
+        this.successDialogVisible.set(true),
       );
     }
   }

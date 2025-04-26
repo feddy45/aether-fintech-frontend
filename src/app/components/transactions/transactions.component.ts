@@ -1,21 +1,21 @@
 import { Component, computed, input } from '@angular/core';
-import { Transaction } from '../../../models/transaction';
+import { Transaction } from '../../models/transaction';
 import { TableModule } from 'primeng/table';
-import { getMonthLabeled } from '../../../utils/date';
+import { getMonthLabeled } from '../../utils/date';
 import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'aef-transactions-list',
+  selector: 'aef-transactions',
   imports: [
     TableModule,
     DatePipe,
     CurrencyPipe,
     NgClass,
   ],
-  templateUrl: './transactions-list.component.html',
-  styleUrl: './transactions-list.component.css',
+  templateUrl: './transactions.component.html',
+  styleUrl: './transactions.component.css',
 })
-export class TransactionsListComponent {
+export class TransactionsComponent {
   transactions = input<Transaction[]>([]);
   transactionComputed = computed(() => {
 

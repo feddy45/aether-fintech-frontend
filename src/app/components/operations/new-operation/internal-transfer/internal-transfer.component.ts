@@ -1,40 +1,32 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { TransferService } from '../../../../services/transfer/transfer.service';
-import { BankAccountService } from '../../../../services/bank-account/bank-account.service';
-import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BankAccount } from '../../../../models/bank-account';
 import { InternalTransferCreate } from '../../../../models/internal-transfer';
 import { Button } from 'primeng/button';
-import { CurrencyPipe } from '@angular/common';
-import { Dialog } from 'primeng/dialog';
 import { InputLabelComponent } from '../../../shared/input-label/input-label.component';
 import { InputNumber } from 'primeng/inputnumber';
-import { PrimeTemplate } from 'primeng/api';
-import { Select } from 'primeng/select';
 import { Textarea } from 'primeng/textarea';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { BankAccountSelectComponent } from '../bank-account-select/bank-account-select.component';
 
 @Component({
   selector: 'aef-internal-transfer',
   imports: [
     Button,
-    CurrencyPipe,
-    Dialog,
     FormsModule,
     InputLabelComponent,
     InputNumber,
-    PrimeTemplate,
     ReactiveFormsModule,
-    Select,
     Textarea,
+    SuccessDialogComponent,
+    BankAccountSelectComponent,
   ],
   templateUrl: './internal-transfer.component.html',
   styleUrl: './internal-transfer.component.css',
 })
-export class InternalTransferComponent implements OnInit {
+export class InternalTransferComponent {
   transferService = inject(TransferService);
-  bankAccountService = inject(BankAccountService);
-  router = inject(Router);
 
   internalTransferForm = new FormGroup({
     originBankAccount: new FormControl<BankAccount | undefined>(undefined, Validators.required),
@@ -43,22 +35,11 @@ export class InternalTransferComponent implements OnInit {
     description: new FormControl<string | undefined>(undefined, Validators.required),
   });
 
-  bankAccounts = signal<BankAccount[]>([]);
-  dialogVisible = signal<boolean>(false);
-
-  ngOnInit(): void {
-    this.bankAccountService.getAll().subscribe(accounts => {
-      this.bankAccounts.set(accounts);
-      this.internalTransferForm.patchValue({ originBankAccount: accounts[0], destinationBankAccount: accounts[1] });
-    });
-  }
+  successDialogVisible = signal<boolean>(false);
 
   newOperation() {
+    this.successDialogVisible.set(false);
     this.internalTransferForm.reset();
-  }
-
-  goToOperationList() {
-    this.router.navigate(['/operations']).then();
   }
 
   onSubmit() {
@@ -71,8 +52,9 @@ export class InternalTransferComponent implements OnInit {
       };
 
       this.transferService.addInternalTransfer(internalTransferCreate).subscribe(() =>
-        this.dialogVisible.set(true),
+        this.successDialogVisible.set(true),
       );
     }
   }
+
 }

@@ -6,14 +6,14 @@ import { BankAccount } from '../../models/bank-account';
 import { Card } from '../../models/card';
 import { CardComponent } from '../card/card.component';
 import { CardService } from '../../services/card/card.service';
-import { TransactionsListComponent } from './transactions-list/transactions-list.component';
+import { TransactionsComponent } from '../transactions/transactions.component';
 
 @Component({
   selector: 'aef-bank-account',
   imports: [
     BankAccountsSliderComponent,
     CardComponent,
-    TransactionsListComponent,
+    TransactionsComponent,
   ],
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.css',

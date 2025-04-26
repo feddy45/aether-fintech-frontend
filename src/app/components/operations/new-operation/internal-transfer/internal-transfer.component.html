@@ -1,36 +1,12 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="internalTransferForm">
   <div class="container">
     <div class="first-line">
-      <aef-input-label inputId="originBankAccount" label="Seleziona il conto corrente di origine">
-        <p-select [options]="bankAccounts()" formControlName="originBankAccount" id="originBankAccount"
-                  optionLabel="name">
-          <ng-template let-bankAccount pTemplate="item">
-            <div class="bank-account-container">
-              <div class="bank-account-text">
-                {{ bankAccount.name }}
-              </div>
-              <div class="bank-account-balance">
-                Disponibilità: {{ bankAccount.balance | currency: 'EUR' }}
-              </div>
-            </div>
-          </ng-template>
-        </p-select>
-      </aef-input-label>
-      <aef-input-label inputId="destinationBankAccount" label="Seleziona il conto corrente di destinazione">
-        <p-select [options]="bankAccounts()" formControlName="destinationBankAccount" id="destinationBankAccount"
-                  optionLabel="name">
-          <ng-template let-bankAccount pTemplate="item">
-            <div class="bank-account-container">
-              <div class="bank-account-text">
-                {{ bankAccount.name }}
-              </div>
-              <div class="bank-account-balance">
-                Disponibilità: {{ bankAccount.balance | currency: 'EUR' }}
-              </div>
-            </div>
-          </ng-template>
-        </p-select>
-      </aef-input-label>
+      <aef-bank-account-select [formControlName]="'originBankAccount'"
+                               inputId="originBankAccount"
+                               label="Seleziona il conto corrente di origine" />
+      <aef-bank-account-select [formControlName]="'destinationBankAccount'"
+                               inputId="destinationBankAccount"
+                               label="Seleziona il conto corrente di destinazione" />
     </div>
     <div class="second-line">
       <div class="description-container">
@@ -51,11 +27,11 @@
   </div>
 </form>
 
-<p-dialog [(visible)]="dialogVisible" [modal]="true" [style]="{ width: '25rem' }"
-          header="Giroconto inserito con successo!">
-  <span class="p-text-secondary block mb-8">Vuoi inserire un nuovo giroconto o tornare alla schermata dell'elenco delle operazioni?</span>
-  <div class="flex justify-end gap-2">
-    <p-button (click)="goToOperationList()" label="Lista operazioni" severity="secondary" />
-    <p-button (click)="newOperation()" label="Nuovo giroconto" />
-  </div>
-</p-dialog>
+<aef-success-dialog (newOperationClicked)="newOperation()"
+                    [(dialogVisible)]="successDialogVisible"
+                    bodyText="Vuoi inserire un nuovo giroconto o tornare alla schermata dell'elenco delle operazioni?"
+                    headerText="Giroconto inserito con successo!"
+                    primaryButtonText="Nuovo giroconto"
+/>
+
+

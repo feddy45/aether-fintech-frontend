@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { BankAccount } from '../../../models/bank-account';
+import { BankAccount } from '../../../../models/bank-account';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({

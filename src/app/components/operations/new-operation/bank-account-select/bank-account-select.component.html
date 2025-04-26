@@ -1,0 +1,20 @@
+<aef-input-label [inputId]="inputId()" [label]="label()">
+  <p-select
+    (onChange)="onSelectChange($event.value)"
+    [disabled]="disabled"
+    [id]="inputId()"
+    [ngModel]="value"
+    [optionLabel]="'name'"
+    [options]="bankAccountService.userBankAccounts()">
+
+    <ng-template let-bankAccount pTemplate="item">
+      <div class="bank-account-container">
+        <div class="bank-account-text">{{ bankAccount.name }}</div>
+        <div class="bank-account-balance">
+          Disponibilità: {{ bankAccount.balance | currency: 'EUR' }}
+        </div>
+      </div>
+    </ng-template>
+
+  </p-select>
+</aef-input-label>
