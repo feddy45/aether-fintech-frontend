@@ -58,7 +58,6 @@ export class AuthenticationService {
         this.messageService.add({ text: 'Error on login: ' + error, severity: 'error' });
       },
     });
-
   }
 
   logout() {

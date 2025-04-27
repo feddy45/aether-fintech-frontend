@@ -1,4 +1,4 @@
-<p-carousel (onPage)="onPageChanged($event)" [circular]="true" [numScroll]="1" [numVisible]="1"
+<p-carousel (onPage)="pageChanged.emit($event)" [circular]="true" [numScroll]="1" [numVisible]="1"
             [value]="bankAccounts()">
   <ng-template let-account pTemplate="item">
     <aef-bank-account-slide [account]="account" />
