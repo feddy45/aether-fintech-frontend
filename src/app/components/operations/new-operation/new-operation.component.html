@@ -1,16 +1,20 @@
-<p-tabs value="0">
+<p-tabs [value]="0">
   <p-tablist>
-    <p-tab value="0">Bonifico</p-tab>
-    <p-tab value="1">Giroconto</p-tab>
+    @for (operation of operationsAvailable(); track operation; let i = $index) {
+      @if (operation.active) {
+        <p-tab [value]="i">{{ operation.name }}</p-tab>
+      }
+    }
   </p-tablist>
   <p-tabpanels>
-    <p-tabpanel value="0">
-      <aef-bank-transfer />
-    </p-tabpanel>
-    <p-tabpanel value="1">
-      <aef-internal-transfer />
-    </p-tabpanel>
+    @for (operation of operationsAvailable(); track operation; let i = $index) {
+      @if (operation.active) {
+        <p-tabpanel [value]="i">
+          <ng-container
+            *ngComponentOutlet="operation.component"></ng-container>
+        </p-tabpanel>
+      }
+    }
   </p-tabpanels>
 </p-tabs>
-
 
