@@ -18,7 +18,7 @@ import { BankAccountSlideComponent } from './bank-account-slide/bank-account-sli
 export class BankAccountsSliderComponent implements OnInit {
   cardService = inject(BankAccountService);
   bankAccounts = signal<BankAccount[]>([]);
-  bankAccountSelected = model<BankAccount>();
+  bankAccountSelected = model.required<BankAccount>();
 
   ngOnInit() {
     this.cardService.getAll().subscribe(cards => {

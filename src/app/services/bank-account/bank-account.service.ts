@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs';
 import { Transaction } from '../../models/transaction';
 import { BankAccount } from '../../models/bank-account';
+import { Card } from '../../models/card';
 
 interface GetBankAccountsResponse {
   bankAccounts: BankAccount[];
@@ -28,10 +29,10 @@ export class BankAccountService {
     return this.http.get<GetBankAccountsResponse>('/api/bank-accounts').pipe(map(res => res.bankAccounts));
   }
 
-  getTransactions(bankAccountId: string, cardId?: string) {
+  getTransactions(bankAccountId: string, cards?: Card[]) {
     let params = new HttpParams();
-    if (cardId) {
-      params = params.set('cardId', cardId);
+    if (cards?.length) {
+      params = params.set('cards', cards.map(card => card.id).join(','));
     }
     return this.http.get<GetTransactionsResponse>(`/api/bank-accounts/${bankAccountId}/transactions`, { params }).pipe(map(res => res.transactions));
   }

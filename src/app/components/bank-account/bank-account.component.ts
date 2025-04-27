@@ -27,19 +27,19 @@ export class BankAccountComponent {
   transactions = signal<Transaction[]>([]);
   cards = signal<Card[]>([]);
   cardsSelected = signal<Card[]>([]);
-  bankAccountSelected = signal<BankAccount | undefined>(undefined);
+  bankAccountSelected = signal<BankAccount>(this.bankAccountService.userBankAccounts()[0]);
 
-  changeBankAccountSelected(bankAccountSelected: BankAccount | undefined) {
+  changeBankAccountSelected(bankAccountSelected: BankAccount) {
     this.bankAccountSelected.set(bankAccountSelected);
 
     if (bankAccountSelected) {
-      this.bankAccountService.getTransactions(bankAccountSelected.id).subscribe(transactions => {
-        this.transactions.set(transactions);
-      });
+      this.cardsSelected.set([]);
+
       this.cardService.getByBankAccountId(bankAccountSelected.id).subscribe(cards => {
         this.cards.set(cards);
-        this.cardsSelected.set(cards);
       });
+
+      this.getTransactions();
     }
   }
 
@@ -48,12 +48,18 @@ export class BankAccountComponent {
   }
 
   cardSelectedChange(cardSelected: Card) {
-    const bankAccount = this.bankAccountSelected();
-    if (bankAccount) {
-      this.cardsSelected.set([cardSelected]);
-      this.bankAccountService.getTransactions(bankAccount.id, cardSelected.id).subscribe(transactions => {
-        this.transactions.set(transactions);
-      });
+    if (this.cardsSelected().some(card => card.id === cardSelected.id)) {
+      this.cardsSelected.set(this.cardsSelected().filter(card => card.id !== cardSelected.id));
+    } else {
+      this.cardsSelected.set([...this.cardsSelected(), cardSelected]);
     }
+
+    this.getTransactions();
+  }
+
+  getTransactions() {
+    this.bankAccountService.getTransactions(this.bankAccountSelected().id, this.cardsSelected()).subscribe(transactions => {
+      this.transactions.set(transactions);
+    });
   }
 }

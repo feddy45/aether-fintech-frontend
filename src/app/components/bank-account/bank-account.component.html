@@ -1,5 +1,6 @@
 <div class="container">
-  <aef-bank-accounts-slider (bankAccountSelectedChange)="changeBankAccountSelected($event)" />
+  <aef-bank-accounts-slider (bankAccountSelectedChange)="changeBankAccountSelected($event)"
+                            [bankAccountSelected]="bankAccountSelected()" />
 
   <div class="card-title-container">
     <h2 class="title">Carte collegate al conto</h2>
