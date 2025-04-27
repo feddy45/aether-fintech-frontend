@@ -28,6 +28,6 @@ export class BankAccountsSliderComponent implements OnInit {
   }
 
   onPageChanged(event: CarouselPageEvent) {
-    if (!!event.page && this.bankAccounts()) this.bankAccountSelected.set(this.bankAccounts()[event.page]);
+    if (event.page !== undefined && this.bankAccounts()) this.bankAccountSelected.set(this.bankAccounts()[event.page]);
   }
 }
