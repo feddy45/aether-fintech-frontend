@@ -17,7 +17,7 @@ import { TopbarButtonComponent } from './topbar-button/topbar-button.component';
 export class TopbarComponent {
   router = inject(Router);
   model: MenuItem[] = [
-    { id: 'bank-account', label: 'Conti', icon: 'pi pi-fw pi-wallet', routerLink: '/' },
+    { id: 'bank-account', label: 'Conti', icon: 'pi pi-fw pi-wallet', routerLink: '/bank-accounts' },
     { id: 'operations', label: 'Operazioni', icon: 'pi pi-fw pi-euro', routerLink: '/operations' },
   ];
 

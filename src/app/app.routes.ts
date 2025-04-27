@@ -15,7 +15,7 @@ export const routes: Routes = [
     children: [
       {
         title: 'I tuoi conti',
-        path: '',
+        path: 'bank-accounts',
         component: BankAccountComponent,
         canActivate: [AuthenticationGuard],
       },
@@ -33,8 +33,7 @@ export const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: '',
-        canActivate: [AuthenticationGuard],
+        redirectTo: 'bank-accounts',
       },
     ],
   },

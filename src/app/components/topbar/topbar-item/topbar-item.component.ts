@@ -29,7 +29,7 @@ export class TopbarItemComponent implements OnInit, OnDestroy {
   }
 
   selectItemByCurrentRoute() {
-    this.isActive.set(this.router.url === this.item().routerLink);
+    this.isActive.set(this.router.url.includes(this.item().routerLink));
   }
 
   ngOnDestroy() {

@@ -1,5 +1,5 @@
 <button (click)="clickOnMenuItem.emit(item())" [id]="item().id + '-topbar-item'"
-        [ngClass]="isActive() ? 'is-active' : ''"
+        [ngClass]="isActive() ? 'active' : ''"
         class="topbar-item-container">
   <i [ngClass]="item().icon" class="topbar-item-icon"></i>
   <span class="topbar-item-label">{{ item().label }}</span>
