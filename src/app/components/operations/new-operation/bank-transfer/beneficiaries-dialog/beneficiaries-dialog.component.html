@@ -1,13 +1,11 @@
 <p-dialog
-  (onHide)="showChange(false)"
-  (onShow)="showChange(true)"
-  [closable]="false"
+  [(visible)]="showDialog"
+  [closable]="true"
   [draggable]="false"
   [modal]="true"
-  [resizable]="false"
-  [visible]="showDialog()">
+  [resizable]="false">
   <p-table [tableStyle]="{ 'min-width': '50rem' }" [value]="beneficiaries()">
-    <ng-template #header>
+    <ng-template pTemplate="header">
       <tr>
         <th id="firstname">Nome</th>
         <th id="lastname">Cognome</th>
@@ -15,7 +13,7 @@
         <th id="select">Seleziona</th>
       </tr>
     </ng-template>
-    <ng-template #body let-beneficiary>
+    <ng-template let-beneficiary pTemplate="body">
       <tr>
         <td>{{ beneficiary.firstName }}</td>
         <td>{{ beneficiary.lastName }}</td>

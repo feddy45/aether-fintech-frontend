@@ -6,6 +6,7 @@ import { InputText } from 'primeng/inputtext';
 import { Button } from 'primeng/button';
 import { Router } from '@angular/router';
 import { Password } from 'primeng/password';
+import { AutoFocus } from 'primeng/autofocus';
 
 @Component({
   selector: 'aef-login',
@@ -15,6 +16,7 @@ import { Password } from 'primeng/password';
     InputText,
     Button,
     Password,
+    AutoFocus,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
