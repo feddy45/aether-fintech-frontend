@@ -3,5 +3,5 @@ import presets from 'jest-preset-angular/presets';
 
 export default {
   ...presets.createCjsPreset(),
-  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 } satisfies Config;
