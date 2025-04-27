@@ -1,10 +1,14 @@
 <div class="container">
   <aef-bank-accounts-slider (bankAccountSelectedChange)="changeBankAccountSelected($event)" />
 
-  <h2 class="title">Carte collegate al conto</h2>
+  <div class="card-title-container">
+    <h2 class="title">Carte collegate al conto</h2>
+    <i class="pi pi-info-circle" pTooltip="Clicca su una carta per filtrare le operazioni"></i>
+
+  </div>
   <div class="cards-container">
     @for (card of cards(); track card.id) {
-      <aef-card [card]="card" />
+      <aef-card [card]="card" [isSelected]="isCardSelected(card)" (cardClicked)="cardSelectedChange(card)" />
     }
   </div>
 

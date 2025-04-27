@@ -11,7 +11,7 @@
 .title {
   font-size: 20px;
   font-weight: bold;
-  padding: 0 16px;
+  padding: 0 0 0 16px;
 }
 
 .container {
@@ -26,4 +26,16 @@
 .cards-container {
   display: flex;
   justify-content: space-around;
+}
+
+.card-title-container {
+  display: flex;
+  gap: 6px
+}
+
+.info {
+  display: flex;
+  padding: 4px;
+  border: 1px solid var(--aef-basic-black);
+  border-radius: 100%;
 }

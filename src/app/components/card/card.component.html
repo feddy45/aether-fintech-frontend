@@ -1,22 +1,24 @@
-<div class="card">
-  <div class="card-inner">
-    <div class="row card-no">
-      @for (number of cardNumberSplit(); track $index; ) {
-        <p>{{ number }}</p>
-      }
+<button (click)="cardClicked.emit()" [ngClass]="isSelected() ? 'selected' : ''" class="card">
+  <div class="button-container">
+    <div class="card-inner">
+      <div class="row card-no">
+        @for (number of cardNumberSplit(); track $index; ) {
+          <p>{{ number }}</p>
+        }
+      </div>
+      <div class="row bottom">
+        <div class="holder">
+          <p>Intestatario</p>
+          <p>{{ authService.user()?.firstName }} {{ authService.user()?.lastName }}</p>
+        </div>
+        <div class="expiration">
+          <p>Validità</p>
+          <p>{{ card().expirationDate | date: 'MM / YY' }}</p>
+        </div>
+      </div>
     </div>
-    <div class="row bottom">
-      <div class="holder">
-        <p>Intestatario</p>
-        <p>{{ authService.user()?.firstName }} {{ authService.user()?.lastName }}</p>
-      </div>
-      <div class="expiration">
-        <p>Validità</p>
-        <p>{{ card().expirationDate | date: 'MM / YY' }}</p>
-      </div>
+    <div class="description-label">
+      {{ card().description }}
     </div>
   </div>
-  <div class="description-label">
-    {{ card().description }}
-  </div>
-</div>
+</button>
