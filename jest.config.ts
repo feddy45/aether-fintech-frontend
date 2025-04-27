@@ -1,7 +1,29 @@
 import type { Config } from 'jest';
-import presets from 'jest-preset-angular/presets';
 
-export default {
-  ...presets.createCjsPreset(),
+const config: Config = {
+  preset: 'jest-preset-angular',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-} satisfies Config;
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.html$',
+    },
+  },
+  transform: {
+    '^.+\\.(ts|js|html)$': 'jest-preset-angular',
+  },
+  testEnvironment: 'jsdom',
+  moduleFileExtensions: ['ts', 'html', 'js', 'json'],
+  moduleNameMapper: {
+    '^@app/(.*)$': '<rootDir>/src/app/$1',
+    '^@environments/(.*)$': '<rootDir>/src/environments/$1',
+  },
+  transformIgnorePatterns: [
+    'node_modules/(?!.*\\.mjs$)',
+  ],
+  collectCoverage: true,
+  coverageReporters: ['html', 'text-summary'],
+  reporters: ['default'],
+};
+
+export default config;
