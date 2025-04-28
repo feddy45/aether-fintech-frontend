@@ -6,13 +6,13 @@
       }
     </div>
     <div class="row bottom">
-      <div class="holder">
-        <p>Intestatario</p>
-        <p>{{ authService.user()?.firstName }} {{ authService.user()?.lastName }}</p>
+      <div class="holder-container">
+        <p class="holder-label">Intestatario</p>
+        <p class="holder">{{ authService.user()?.firstName }} {{ authService.user()?.lastName }}</p>
       </div>
-      <div class="expiration">
-        <p>Validità</p>
-        <p>{{ card().expirationDate | date: 'MM / YY' }}</p>
+      <div class="expiration-container">
+        <p class="expiration-label">Validità</p>
+        <p class="expiration">{{ card().expirationDate | date: 'MM / YY' }}</p>
       </div>
     </div>
   </div>

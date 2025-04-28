@@ -52,13 +52,14 @@
   margin-top: auto;
 }
 
-.holder, .expiration {
+.holder-container, .expiration-container {
   font-size: 14px;
-
+  
   :first-child {
     font-size: 10px;
   }
 }
+
 
 .description-label {
   padding-top: 10px;
