@@ -6,16 +6,12 @@ import { By } from '@angular/platform-browser';
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeIt from '@angular/common/locales/it';
+import { mockedBankAccounts } from '../../../../mocks/bank-account';
 
 describe('BankAccountSlideComponent', () => {
   let fixture: ComponentFixture<BankAccountSlideComponent>;
 
-  const accountMocked: BankAccount = {
-    id: '12y908gh9812-12fer',
-    iban: 'IT60X0542811101000000123459',
-    name: 'Test Account',
-    balance: 1000,
-  };
+  const accountMocked: BankAccount = mockedBankAccounts[1];
 
   beforeEach(async () => {
     registerLocaleData(localeIt, 'it');
@@ -37,7 +33,7 @@ describe('BankAccountSlideComponent', () => {
       .query(By.css('.balance'))
       .nativeElement.textContent;
 
-    expect(balance).toBe('1.000,00 €');
+    expect(balance).toBe('2.000,00 €');
   });
 
   it('should display the account name', () => {
