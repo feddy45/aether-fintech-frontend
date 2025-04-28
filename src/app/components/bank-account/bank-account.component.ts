@@ -41,7 +41,7 @@ export class BankAccountComponent implements OnInit {
 
   changeBankAccountSelected(page: CarouselPageEvent) {
     if (page.page !== undefined) {
-      this.bankAccountSelected.set(this.bankAccountService.userBankAccounts()[page.page]);
+      this.bankAccountSelected.set(this.bankAccounts()[page.page]);
       this.resetCardsByAccount();
     }
   }
@@ -49,12 +49,12 @@ export class BankAccountComponent implements OnInit {
   resetCardsByAccount() {
     const bankAccountSelected = this.bankAccountSelected();
     if (bankAccountSelected) {
-
       this.cardsSelected.set([]);
 
       this.cardService.getByBankAccountId(bankAccountSelected.id).subscribe(cards => {
         this.cards.set(cards);
       });
+
       this.getTransactions();
     }
   }

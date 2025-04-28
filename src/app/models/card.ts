@@ -3,5 +3,4 @@ export interface Card {
   description: string;
   number: string;
   expirationDate: Date;
-  balance: number;
 }
