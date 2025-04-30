@@ -2,7 +2,7 @@
   <p-tablist>
     @for (operation of operationsAvailable(); track operation; let i = $index) {
       @if (operation.active) {
-        <p-tab [value]="i">{{ operation.name }}</p-tab>
+        <p-tab [value]="i" [attr.data-testid]="`tab-${operation.name}`">{{ operation.name }}</p-tab>
       }
     }
   </p-tablist>

@@ -22,6 +22,6 @@ export class SuccessDialogComponent {
   newOperationClicked = output();
 
   goToOperationList() {
-    this.router.navigate(['/operations']).then();
+    this.router.navigate(['/operations']);
   }
 }

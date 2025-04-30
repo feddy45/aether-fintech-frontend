@@ -1,6 +1,7 @@
 <div class="header">
   <h2>Storico operazioni</h2>
-  <p-button (onClick)="newOperation()" [label]="'Nuova operazione'" icon="pi pi-plus" severity="primary" />
+  <p-button (onClick)="newOperation()" [label]="'Nuova operazione'" data-testid="btn-new-operation" icon="pi pi-plus"
+            severity="primary" />
 </div>
 <div class="transfers-container">
   <p-table [value]="transfers()">

@@ -30,6 +30,6 @@ export class OperationsComponent implements OnInit {
   }
 
   newOperation() {
-    this.router.navigate(['/operations/new-operation']).then();
+    this.router.navigate(['/operations/new-operation']);
   }
 }
