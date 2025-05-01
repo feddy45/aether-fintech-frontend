@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopbarItemComponent } from './topbar-item.component';
 
-describe('SidebarItemComponent', () => {
+describe('TopbarItemComponent', () => {
   let component: TopbarItemComponent;
   let fixture: ComponentFixture<TopbarItemComponent>;
 

@@ -1,5 +1,5 @@
-<p-button (click)="menu.toggle($event)" [rounded]="true" icon="pi pi-user" severity="info" size="large" />
-<p-menu #menu [model]="items" [popup]="true">
+<p-button (onClick)="menu.toggle($event)" [rounded]="true" icon="pi pi-user" severity="info" size="large" />
+<p-menu #menu [appendTo]="'body'" [model]="items" [popup]="true">
   <ng-template pTemplate="start">
     <div class="user-container">
       <p-avatar [label]="getUserLabel()"
