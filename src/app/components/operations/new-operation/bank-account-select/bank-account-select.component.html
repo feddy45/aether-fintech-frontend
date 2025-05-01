@@ -1,18 +1,16 @@
-<aef-input-label [inputId]="inputId()" [label]="label()">
+<aef-input-label [inputId]="selectId()" [label]="label()">
   <p-select
     (onChange)="onSelectChange($event.value)"
     [disabled]="disabled"
-    [id]="inputId()"
+    [id]="selectId()"
     [ngModel]="value"
     [optionLabel]="'name'"
     [options]="bankAccountService.userBankAccounts()">
 
     <ng-template let-bankAccount pTemplate="item">
-      <div class="bank-account-container">
+      <div [id]="`${selectId()}-option-${bankAccount.id}`" class="bank-account-option-container">
         <div class="bank-account-text">{{ bankAccount.name }}</div>
-        <div class="bank-account-balance">
-          Disponibilità: {{ bankAccount.balance | currency: 'EUR' }}
-        </div>
+        <div class="bank-account-balance">Disponibilità: {{ bankAccount.balance | currency: 'EUR' }}</div>
       </div>
     </ng-template>
 

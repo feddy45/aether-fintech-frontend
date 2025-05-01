@@ -31,16 +31,14 @@ export class BankAccountSelectComponent implements ControlValueAccessor {
   bankAccountService = inject(BankAccountService);
 
   formControlName = input.required<string>();
-  inputId = input.required<string>();
+  selectId = input.required<string>();
   label = input.required<string>();
 
   value: BankAccount | undefined;
   disabled = false;
 
-  onChange: (value: BankAccount | undefined) => void = () => {
-  };
-  onTouched: () => void = () => {
-  };
+  onChange?: (value: BankAccount | undefined) => void;
+  onTouched?: () => void;
 
   writeValue(value: BankAccount | undefined): void {
     this.value = value;
@@ -60,7 +58,7 @@ export class BankAccountSelectComponent implements ControlValueAccessor {
 
   onSelectChange(value: BankAccount) {
     this.value = value;
-    this.onChange(this.value);
-    this.onTouched();
+    this.onChange?.(this.value);
+    this.onTouched?.();
   }
 }
