@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { InputGroup } from 'primeng/inputgroup';
 import { InputText } from 'primeng/inputtext';
 import { InputGroupAddon } from 'primeng/inputgroupaddon';
@@ -45,7 +45,7 @@ import { BankAccountSelectComponent } from '../bank-account-select/bank-account-
   templateUrl: './bank-transfer.component.html',
   styleUrl: './bank-transfer.component.css',
 })
-export class BankTransferComponent implements OnInit {
+export class BankTransferComponent {
   transferService = inject(TransferService);
   bankAccountService = inject(BankAccountService);
   router = inject(Router);
@@ -58,16 +58,8 @@ export class BankTransferComponent implements OnInit {
     description: new FormControl<string | undefined>(undefined, Validators.required),
   });
 
-  bankAccounts = signal<BankAccount[]>([]);
   showBeneficiaryDialog = signal<boolean>(false);
   successDialogVisible = signal<boolean>(false);
-
-  ngOnInit(): void {
-    this.bankAccountService.getAll().subscribe(accounts => {
-      this.bankAccounts.set(accounts);
-      this.bankTransferForm.patchValue({ bankAccount: accounts[0] });
-    });
-  }
 
   newOperation() {
     this.bankTransferForm.reset();

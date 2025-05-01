@@ -27,10 +27,6 @@ export class BeneficiariesDialogComponent implements OnInit {
     });
   }
 
-  showChange(isShow: boolean) {
-    this.showDialog.set(isShow);
-  }
-
   buttonClick(beneficiary: Contact) {
     this.showDialog.set(false);
     this.selectBeneficiary.emit(beneficiary);

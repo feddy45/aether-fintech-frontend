@@ -22,7 +22,9 @@
       </div>
     </div>
     <div class="button-container">
-      <p-button [disabled]="!internalTransferForm.valid" severity="primary" type="submit">Inserisci giroconto</p-button>
+      <p-button [attr.data-testid]="'btn-submit-internal-transfer'" [disabled]="!internalTransferForm.valid"
+                severity="primary" type="submit">Inserisci giroconto
+      </p-button>
     </div>
   </div>
 </form>

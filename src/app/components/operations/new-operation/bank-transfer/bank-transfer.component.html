@@ -34,7 +34,9 @@
       </aef-input-label>
     </div>
     <div class="button-container">
-      <p-button [disabled]="!bankTransferForm.valid" severity="primary" type="submit">Inserisci bonifico</p-button>
+      <p-button [attr.data-testid]="'btn-submit-bank-transfer'" [disabled]="!bankTransferForm.valid" severity="primary"
+                type="submit">Inserisci bonifico
+      </p-button>
     </div>
   </div>
 </form>

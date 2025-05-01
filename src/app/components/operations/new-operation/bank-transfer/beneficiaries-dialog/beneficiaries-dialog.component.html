@@ -19,7 +19,9 @@
         <td>{{ beneficiary.lastName }}</td>
         <td>{{ beneficiary.iban }}</td>
         <td>
-          <p-button (onClick)="buttonClick(beneficiary)">Seleziona</p-button>
+          <p-button (onClick)="buttonClick(beneficiary)" [attr.data-testid]="`btn-beneficiary-${beneficiary.id}`">
+            Seleziona
+          </p-button>
         </td>
       </tr>
     </ng-template>
