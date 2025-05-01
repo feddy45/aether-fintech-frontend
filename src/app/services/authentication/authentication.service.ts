@@ -50,7 +50,7 @@ export class AuthenticationService {
   login(loginRequest: LoginRequest) {
     this.http.post<LoginResponse>('/api/auth/login', loginRequest).subscribe({
       next: (response) => {
-        this.setToken(response.token.token);
+        this.setToken(response.token);
         this.setUserByToken();
         this.router.navigate(['/']);
       },

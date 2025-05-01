@@ -1,8 +1,8 @@
 <div class="topbar-container">
   <div class="topbar-left">
     <div class="topbar-items-container">
-      @for (item of model; track item.id; let i = $index) {
-        <aef-topbar-item [index]="i" [item]="item" (clickOnMenuItem)="onMenuItemClick($event)" />
+      @for (item of model; track item.id) {
+        <aef-topbar-item [item]="item" (clickOnMenuItem)="onMenuItemClick($event)" />
       }
     </div>
   </div>

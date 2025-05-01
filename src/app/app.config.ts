@@ -7,6 +7,7 @@ import { AefTheme } from '../styles/app-theme';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AuthInterceptor } from './Interceptors/auth-interceptor';
 import { MessageService } from 'primeng/api';
+import { ErrorsInterceptor } from './Interceptors/errors-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +20,11 @@ export const appConfig: ApplicationConfig = {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorsInterceptor,
       multi: true,
     },
     provideHttpClient(withInterceptorsFromDi()),

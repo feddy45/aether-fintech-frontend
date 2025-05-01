@@ -4,7 +4,5 @@ export interface LoginRequest {
 }
 
 export interface LoginResponse {
-  token: {
-    token: string;
-  };
+  token: string;
 }
