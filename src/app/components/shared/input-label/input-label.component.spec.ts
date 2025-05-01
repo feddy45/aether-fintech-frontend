@@ -8,12 +8,15 @@ describe('InputLabelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InputLabelComponent]
+      imports: [InputLabelComponent],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(InputLabelComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('inputId', 'input-id');
+    fixture.componentRef.setInput('label', 'label');
+
     fixture.detectChanges();
   });
 

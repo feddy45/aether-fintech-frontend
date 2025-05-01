@@ -15,7 +15,6 @@ import { Subscription } from 'rxjs';
 export class TopbarItemComponent implements OnInit, OnDestroy {
   router = inject(Router);
   item = input.required<MenuItem>();
-  index = input.required<number>();
   clickOnMenuItem = output<MenuItem>();
 
   isActive = signal<boolean>(false);

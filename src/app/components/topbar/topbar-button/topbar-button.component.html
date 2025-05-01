@@ -1,4 +1,5 @@
-<p-button (onClick)="menu.toggle($event)" [rounded]="true" icon="pi pi-user" severity="info" size="large" />
+<p-button (onClick)="menu.toggle($event)" [attr.data-testid]="'btn-topbar-menu'" [rounded]="true" icon="pi pi-user"
+          severity="info" size="large" />
 <p-menu #menu [appendTo]="'body'" [model]="items" [popup]="true">
   <ng-template pTemplate="start">
     <div class="user-container">
