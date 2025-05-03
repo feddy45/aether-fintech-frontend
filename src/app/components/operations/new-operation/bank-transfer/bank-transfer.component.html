@@ -43,9 +43,11 @@
 
 <aef-beneficiaries-dialog (selectBeneficiary)="beneficiarySelected($event)" [(showDialog)]="showBeneficiaryDialog" />
 
-<aef-success-dialog (newOperationClicked)="newOperation()"
+<aef-success-dialog (primaryButtonClicked)="newOperation()"
+                    (secondaryButtonClicked)="goToOperationList()"
                     [(dialogVisible)]="successDialogVisible"
                     bodyText="Vuoi inserire un nuovo bonifico o tornare alla schermata dell'elenco delle operazioni?"
                     headerText="Bonifico inserito con successo!"
                     primaryButtonText="Nuovo bonifico"
+                    secondaryButtonText="Lista delle operazioni"
 />

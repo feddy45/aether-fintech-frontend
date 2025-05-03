@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 describe('SuccessDialogComponent', () => {
   let component: SuccessDialogComponent;
   let fixture: ComponentFixture<SuccessDialogComponent>;
-  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -20,32 +19,32 @@ describe('SuccessDialogComponent', () => {
     })
       .compileComponents();
 
-    router = TestBed.inject(Router);
     fixture = TestBed.createComponent(SuccessDialogComponent);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('dialogVisible', true);
     fixture.componentRef.setInput('headerText', 'Successo');
     fixture.componentRef.setInput('bodyText', 'Inserito con successo');
     fixture.componentRef.setInput('primaryButtonText', 'Nuova operazione');
+    fixture.componentRef.setInput('secondaryButtonText', 'lista operazioni');
 
     fixture.detectChanges();
   });
 
-  it('should emit new operation on click', () => {
-    const spyOnNewOperation = jest.spyOn(component.newOperationClicked, 'emit');
-    const newOperationBtn = fixture.debugElement.query(By.css('[data-testid="btn-new-operation"] button')).nativeElement;
+  it('should emit primaryButtonClicked operation on click', () => {
+    const spyOnPrimaryClick = jest.spyOn(component.primaryButtonClicked, 'emit');
+    const newOperationBtn = fixture.debugElement.query(By.css('[data-testid="btn-primary"] button')).nativeElement;
     newOperationBtn.click();
     fixture.detectChanges();
 
-    expect(spyOnNewOperation).toHaveBeenCalled();
+    expect(spyOnPrimaryClick).toHaveBeenCalled();
   });
 
-  it('should navigate to operation list if operation list button has clicked', () => {
-    const navigateSpy = jest.spyOn(router, 'navigate');
-    const operationListButton = fixture.debugElement.query(By.css('[data-testid="btn-go-to-operation-list"] button')).nativeElement;
-    operationListButton.click();
+  it('should emit secondaryButtonClicked if secondaryButton button has clicked', () => {
+    const spyOnSecondaryClick = jest.spyOn(component.secondaryButtonClicked, 'emit');
+    const newOperationBtn = fixture.debugElement.query(By.css('[data-testid="btn-secondary"] button')).nativeElement;
+    newOperationBtn.click();
     fixture.detectChanges();
 
-    expect(navigateSpy).toHaveBeenCalledWith(['/operations']);
+    expect(spyOnSecondaryClick).toHaveBeenCalled();
   });
 });

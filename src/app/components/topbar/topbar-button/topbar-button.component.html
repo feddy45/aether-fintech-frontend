@@ -12,3 +12,11 @@
     </div>
   </ng-template>
 </p-menu>
+
+<aef-change-password-dialog (passwordChanged)="passwordChanged()"
+                            [(dialogVisible)]="changePasswordModalVisible" />
+
+<aef-success-dialog (primaryButtonClicked)="logout()" (secondaryButtonClicked)="confirmDialogVisible.set(false)"
+                    [(dialogVisible)]="confirmDialogVisible" [bodyText]="'Password cambiata con successo!'"
+                    [headerText]="'Cambio password'" [primaryButtonText]="'Logout'"
+                    [secondaryButtonText]="'Rimani loggato'" />

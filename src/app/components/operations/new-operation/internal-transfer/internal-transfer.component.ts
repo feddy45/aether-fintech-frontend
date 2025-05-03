@@ -7,8 +7,9 @@ import { Button } from 'primeng/button';
 import { InputLabelComponent } from '../../../shared/input-label/input-label.component';
 import { InputNumber } from 'primeng/inputnumber';
 import { Textarea } from 'primeng/textarea';
-import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { SuccessDialogComponent } from '../../../success-dialog/success-dialog.component';
 import { BankAccountSelectComponent } from '../bank-account-select/bank-account-select.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'aef-internal-transfer',
@@ -27,6 +28,7 @@ import { BankAccountSelectComponent } from '../bank-account-select/bank-account-
 })
 export class InternalTransferComponent {
   transferService = inject(TransferService);
+  router = inject(Router);
 
   internalTransferForm = new FormGroup({
     originBankAccount: new FormControl<BankAccount | undefined>(undefined, Validators.required),
@@ -40,6 +42,10 @@ export class InternalTransferComponent {
   newOperation() {
     this.successDialogVisible.set(false);
     this.internalTransferForm.reset();
+  }
+
+  goToOperationList() {
+    this.router.navigate(['/operations']);
   }
 
   onSubmit() {

@@ -23,7 +23,7 @@ import { BankTransferCreate } from '../../../../models/bank-transfer';
 import { Router } from '@angular/router';
 import { BankAccountService } from '../../../../services/bank-account/bank-account.service';
 import { BankAccount } from '../../../../models/bank-account';
-import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { SuccessDialogComponent } from '../../../success-dialog/success-dialog.component';
 import { BankAccountSelectComponent } from '../bank-account-select/bank-account-select.component';
 
 @Component({
@@ -88,6 +88,10 @@ export class BankTransferComponent {
       beneficiary: `${beneficiary.firstName} ${beneficiary.lastName}`,
       iban: beneficiary.iban,
     });
+  }
+
+  goToOperationList() {
+    this.router.navigate(['/operations']);
   }
 
   private italianIbanValidator(): ValidatorFn {

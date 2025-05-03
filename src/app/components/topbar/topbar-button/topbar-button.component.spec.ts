@@ -39,7 +39,7 @@ describe('TopbarButtonComponent', () => {
     fixture.detectChanges();
 
     const menuitems = fixture.debugElement.queryAll(By.css('.p-menu-item-link'));
-    menuitems[0].nativeElement.click();
+    menuitems[1].nativeElement.click();
     fixture.detectChanges();
 
     expect(logoutSpy).toHaveBeenCalled();
@@ -47,5 +47,17 @@ describe('TopbarButtonComponent', () => {
 
   it('should getUserLabel return first letter of first name and last name', () => {
     expect(component.getUserLabel()).toEqual('MR');
+  });
+
+  it('should open change password dialog on change password button click', () => {
+    const btnMenu = fixture.debugElement.query(By.css('[data-testid="btn-topbar-menu"] button')).nativeElement;
+    btnMenu.click();
+    fixture.detectChanges();
+
+    const menuitems = fixture.debugElement.queryAll(By.css('.p-menu-item-link'));
+    menuitems[0].nativeElement.click();
+    fixture.detectChanges();
+
+    expect(component.changePasswordModalVisible()).toBe(true);
   });
 });

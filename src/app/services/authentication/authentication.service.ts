@@ -1,10 +1,10 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginRequest, LoginResponse } from '../../models/login';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { MessageService } from 'primeng/api';
 import { jwtDecode } from 'jwt-decode';
+import { ChangePasswordRequest, LoginRequest, LoginResponse } from '../../models/authentication';
 
 export interface AefJwtPayload {
   sub: string;
@@ -64,6 +64,10 @@ export class AuthenticationService {
     this.clearToken();
     this.router.navigate(['/login']);
     this.user.set(undefined);
+  }
+
+  changePassword(changePasswordRequest: ChangePasswordRequest) {
+    return this.http.post<void>('/api/auth/change-password', changePasswordRequest);
   }
 
   private setUserByToken() {
