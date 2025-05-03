@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { TransferService } from '../../../../services/transfer/transfer.service';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { BankAccount } from '../../../../models/bank-account';
 import { InternalTransferCreate } from '../../../../models/internal-transfer';
 import { Button } from 'primeng/button';
@@ -35,7 +35,7 @@ export class InternalTransferComponent {
     destinationBankAccount: new FormControl<BankAccount | undefined>(undefined, Validators.required),
     amount: new FormControl<number | undefined>(undefined, Validators.required),
     description: new FormControl<string | undefined>(undefined, Validators.required),
-  });
+  }, { validators: this.equalBankAccountsValidator() } );
 
   successDialogVisible = signal<boolean>(false);
 
@@ -63,4 +63,16 @@ export class InternalTransferComponent {
     }
   }
 
+  equalBankAccountsValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const originBankAccount = control.get('originBankAccount')?.value?.id;
+      const destinationBankAccount = control.get('destinationBankAccount')?.value?.id;
+
+      if (originBankAccount === destinationBankAccount) {
+        return { equalBankAccounts: true };
+      }
+
+      return null;
+    };
+  }
 }

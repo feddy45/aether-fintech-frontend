@@ -21,6 +21,11 @@
         </aef-input-label>
       </div>
     </div>
+    @if (internalTransferForm.hasError('equalBankAccounts') && internalTransferForm.touched) {
+      <div class="bank-transfer-error">
+        Il conto corrente di origine e quello di destinazione non possono essere uguali.
+      </div>
+    }
     <div class="button-container">
       <p-button [attr.data-testid]="'btn-submit-internal-transfer'" [disabled]="!internalTransferForm.valid"
                 severity="primary" type="submit">Inserisci giroconto

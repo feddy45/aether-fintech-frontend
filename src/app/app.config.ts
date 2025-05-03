@@ -5,9 +5,9 @@ import { providePrimeNG } from 'primeng/config';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AefTheme } from '../styles/app-theme';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { AuthInterceptor } from './Interceptors/auth-interceptor';
+import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { MessageService } from 'primeng/api';
-import { ErrorsInterceptor } from './Interceptors/errors-interceptor';
+import { ErrorsInterceptor } from './interceptors/errors-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
