@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { InputGroup } from 'primeng/inputgroup';
 import { InputText } from 'primeng/inputtext';
 import { InputGroupAddon } from 'primeng/inputgroupaddon';
@@ -57,6 +57,7 @@ export class BankTransferComponent {
     amount: new FormControl<number | undefined>(undefined, Validators.required),
     description: new FormControl<string | undefined>(undefined, Validators.required),
   });
+  ibanControl = computed(() => this.bankTransferForm.get('iban'));
 
   showBeneficiaryDialog = signal<boolean>(false);
   successDialogVisible = signal<boolean>(false);

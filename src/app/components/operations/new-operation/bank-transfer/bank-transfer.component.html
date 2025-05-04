@@ -33,6 +33,11 @@
         <textarea formControlName="description" id="description" pTextarea rows="2"></textarea>
       </aef-input-label>
     </div>
+    @if (ibanControl()?.errors?.['invalidIban'] && ibanControl()?.touched) {
+      <div class="iban-error">
+        L'IBAN inserito non è conforme ad un IBAN italiano.
+      </div>
+    }
     <div class="button-container">
       <p-button [attr.data-testid]="'btn-submit-bank-transfer'" [disabled]="!bankTransferForm.valid" severity="primary"
                 type="submit">Inserisci bonifico

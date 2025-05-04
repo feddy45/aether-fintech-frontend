@@ -30,3 +30,7 @@
   display: flex;
   justify-content: space-between;
 }
+
+.iban-error {
+  color: var(--aef-negative-base);
+}
