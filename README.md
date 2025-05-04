@@ -28,9 +28,11 @@ Il progetto utilizza come libreria di test Jest. Per eseguire gli unit test, puo
 ng test
 ```
 
-## Note aggiuntive
+## Accesso all'applicazione
 
-- Per eseguire l'accesso all'applicazione si possono utilizzare gli utenti con username:
-  - federico
-  - giulia
-    la password, identica per tutti e due gli utenti, è "Aether123."
+Lanciando lo script Docker all'interno della repository del backend, viene inizializzato il database con due utenti predefiniti:
+
+- `federico`
+- `giulia`
+
+La password, identica per tutti e due gli utenti, è `Aether123.`
