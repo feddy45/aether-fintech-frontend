@@ -27,3 +27,10 @@ Il progetto utilizza come libreria di test Jest. Per eseguire gli unit test, puo
 ```bash
 ng test
 ```
+
+## Note aggiuntive
+
+- Per eseguire l'accesso all'applicazione si possono utilizzare gli utenti con username:
+  - federico
+  - giulia
+    la password, identica per tutti e due gli utenti, è "Aether123."
