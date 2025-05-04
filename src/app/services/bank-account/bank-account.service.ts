@@ -1,4 +1,5 @@
-import { Injectable, signal } from '@angular/core';
+import { AuthenticationService } from './../authentication/authentication.service';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs';
 import { Transaction } from '../../models/transaction';
@@ -17,9 +18,18 @@ interface GetTransactionsResponse {
   providedIn: 'root',
 })
 export class BankAccountService {
+  authenticationSerivce = inject(AuthenticationService);
   userBankAccounts = signal<BankAccount[]>([]);
 
   constructor(private readonly http: HttpClient) {
+    effect(() => {
+        if(this.authenticationSerivce.user()){
+          this.getAndSetUserBankAccounts();
+        }
+    })
+  }
+
+  getAndSetUserBankAccounts() {
     this.getAll().subscribe(response => {
       this.userBankAccounts.set(response);
     });

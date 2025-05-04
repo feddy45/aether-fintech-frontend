@@ -3,7 +3,9 @@
   [closable]="true"
   [draggable]="false"
   [modal]="true"
-  [resizable]="false">
+  [resizable]="false"
+  [header]="'Seleziona un tuo contatto per compilare i campi automaticamente'"
+  >
   <p-table [tableStyle]="{ 'min-width': '50rem' }" [value]="beneficiaries()">
     <ng-template pTemplate="header">
       <tr>
