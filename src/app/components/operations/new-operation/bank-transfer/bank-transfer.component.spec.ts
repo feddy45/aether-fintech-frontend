@@ -6,6 +6,7 @@ import { mockedBankAccounts } from '../../../../mocks/bank-account';
 import { By } from '@angular/platform-browser';
 import { TransferService } from '../../../../services/transfer/transfer.service';
 import { of } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 describe('BankTransferComponent', () => {
   let component: BankTransferComponent;
@@ -16,10 +17,12 @@ describe('BankTransferComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [BankTransferComponent],
-      providers: [provideHttpClient(), {
-        provide: TransferService,
-        useValue: { addBankTransfer: mockAddBankTransfer },
-      }],
+      providers: [provideHttpClient(),
+        MessageService,
+        {
+          provide: TransferService,
+          useValue: { addBankTransfer: mockAddBankTransfer },
+        }],
     })
       .compileComponents();
 

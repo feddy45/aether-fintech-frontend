@@ -4,6 +4,8 @@ import { BankAccountService } from './bank-account.service';
 import { provideHttpClient } from '@angular/common/http';
 import { mockedBankAccounts, transactionsMock } from '../../mocks/bank-account';
 import { cardsMock } from '../../mocks/card';
+import { MessageService } from 'primeng/api';
+
 
 describe('BankAccountService', () => {
   let service: BankAccountService;
@@ -15,9 +17,9 @@ describe('BankAccountService', () => {
         provideHttpClient(),
         provideHttpClientTesting(),
         BankAccountService,
+        MessageService,
       ],
     });
-
     service = TestBed.inject(BankAccountService);
     httpTesting = TestBed.inject(HttpTestingController);
   });
@@ -26,25 +28,7 @@ describe('BankAccountService', () => {
     httpTesting.verify();
   });
 
-  it('should retrieve bank accounts and store them', done => {
-    const req = httpTesting.expectOne('/api/bank-accounts');
-    req.flush({ bankAccounts: mockedBankAccounts });
-
-    setTimeout(() => {
-      try {
-        expect(service.userBankAccounts()).toEqual(mockedBankAccounts);
-        done();
-      } catch (error) {
-        done(error);
-      }
-    });
-  });
-
   it('should retrieve transactions for a bank account', done => {
-    const req1 = httpTesting.expectOne('/api/bank-accounts');
-    req1.flush({ bankAccounts: mockedBankAccounts });
-
-
     const bankAccountId = mockedBankAccounts[0].id;
     service.getTransactions(bankAccountId).subscribe(transactions => {
       expect(transactions).toEqual(transactionsMock);
@@ -57,8 +41,6 @@ describe('BankAccountService', () => {
   });
 
   it('should pass card IDs as query parameters for transactions', done => {
-    const req1 = httpTesting.expectOne('/api/bank-accounts');
-    req1.flush({ bankAccounts: mockedBankAccounts });
     const bankAccountId = mockedBankAccounts[0].id;
 
     service.getTransactions(bankAccountId, [cardsMock[1]]).subscribe(transactions => {

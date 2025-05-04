@@ -6,6 +6,7 @@ import { TransferService } from '../../../../services/transfer/transfer.service'
 import { By } from '@angular/platform-browser';
 import { mockedBankAccounts } from '../../../../mocks/bank-account';
 import { of } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 describe('InternalTransferComponent', () => {
   let component: InternalTransferComponent;
@@ -15,7 +16,7 @@ describe('InternalTransferComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [InternalTransferComponent],
-      providers: [provideHttpClient(), {
+      providers: [provideHttpClient(), MessageService, {
         provide: TransferService,
         useValue: { addInternalTransfer: mockAddInternalTransfer },
       }],
